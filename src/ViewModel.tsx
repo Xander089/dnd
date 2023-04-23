@@ -6,7 +6,7 @@ export class ViewModel {
     localStorage.clear();
     Dao.deleteAll("player");
     Dao.deleteAll("monster");
-    Dao.writeAll();
+    // Dao.writeAll();
     Dao.resetGame();
     History.deleteAll();
   }
