@@ -1,0 +1,5 @@
+stile 6
+storia 2
+edit turn modale 1
+choose monsters modale 2
+labels 1

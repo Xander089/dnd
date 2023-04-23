@@ -1,0 +1,17 @@
+.header {
+  border-bottom: 1px solid #bbb;
+  grid-column: 2/20;
+  grid-row: 1/2;
+}
+.header-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 2rem;
+  padding-right: 3.5rem;
+}
+
+.header-container-monsters {
+  justify-content: space-between;
+}

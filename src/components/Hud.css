@@ -1,0 +1,32 @@
+.hud {
+  grid-column: 2/20;
+  grid-row: 12/13;
+  background-color: var(--yellow-light);
+  border-top: 1px solid #bbb;
+}
+
+.hud-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+.hud-container div {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+}
+
+.current-turn {
+  width: 10rem;
+}
+
+.hud-arrow {
+  transition: all 0.1s ease-in-out;
+}
+.hud-arrow:hover {
+  border: none;
+  background-color: var(--yellow);
+  transform: scale(1.1);
+}

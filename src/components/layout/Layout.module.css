@@ -1,0 +1,10 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+}
+
+.link:hover {
+  color: var(--lighter);
+}

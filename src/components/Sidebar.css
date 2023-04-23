@@ -1,0 +1,44 @@
+.sidebar {
+  /* background: #eee; */
+  background-color: var(--yellow);
+
+  grid-column: 1/2;
+  grid-row: 1/13;
+  transition: all 1s ease-in-out;
+}
+
+.sidebar-container {
+  position: relative;
+  padding: 1rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tooltip-sidebar {
+  margin-top: 0.2rem;
+}
+.tooltip-sidebar p {
+  background: #eee;
+}
+
+.tooltip button:hover {
+  background-color: transparent;
+  border: none;
+  transform: scale(1.2);
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.settings {
+  display: flex;
+}

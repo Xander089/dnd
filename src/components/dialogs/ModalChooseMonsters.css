@@ -1,0 +1,85 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+.search-input {
+  width: 100%;
+  margin: 0;
+  padding: 0 0.2rem;
+}
+
+.search-modal-buttons {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.monster-category-list {
+  max-height: 10rem;
+
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: scroll;
+}
+
+.monster-category-row {
+  width: 80%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+.monster-category-row p,
+.monster-category-row input {
+  margin: 0;
+  padding: 0;
+}
+.monster-category-row p {
+  width: 4rem;
+}
+
+.modal-title {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #bbb;
+}
+.modal-choose-title {
+  margin-bottom: 1rem;
+}
+
+.modal-title h3,
+.modal-delete-content p {
+  margin: 0.5rem 0;
+}
+
+.modal-title h3 {
+  margin-top: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.modal-delete-content p {
+  font-size: 1.15rem;
+}
+
+.choose-monsters-header {
+  margin-top: 1rem;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.choose-monsters-header p {
+  margin: 0;
+  padding: 0;
+  color: #888;
+}
+
+.select-monster-checkbox {
+  height: 1rem;
+  width: 2rem;
+}

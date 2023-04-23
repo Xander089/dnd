@@ -1,0 +1,33 @@
+.settings-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.settings-buttons-small {
+  margin-top: 0;
+}
+
+.settings-buttons-small button {
+  padding: 0.1em 1em;
+  min-height: 1.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.settings-download-textarea {
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 10rem;
+  max-height: 10rem;
+}
+.settings-subtitles {
+  margin: 0;
+}
+
+.modal-settings {
+  gap: 0.5rem;
+}

@@ -1,0 +1,27 @@
+.modal-delete-button {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-title {
+  display: flex;
+  /* justify-content: center; */
+  width: 100%;
+  border-bottom: 1px solid #bbb;
+}
+
+.modal-title h3,
+.modal-delete-content p {
+  /* text-align: center; */
+  margin: 0.5rem 0;
+}
+
+.modal-title h3 {
+  margin-top: 0;
+}
+
+.modal-delete-content p {
+  font-size: 1.15rem;
+}

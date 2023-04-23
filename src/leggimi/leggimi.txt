@@ -1,0 +1,80 @@
+0. altro
+quando inserisco danno, effetto visivo rosso con il numero del danno inserito che compare e scomapre
+quando inserisco cura, effetto visivo verde con il numero della cura (tipo effervescenza)
+tasto reset game
+DONE in generale, provare a usare accordion per mostrare/nascondere le statistiche in game
+
+
+1.inserisci l'inserisci ferite: SEMI DONE
+una modale con casella di testo con anche tasti + e -  e tasto ok\cancel
+tasto per ogni gioctore con icona spada rossa per aprire il pop up
+
+2.inserisci la cura: SEMI DONE
+una modale con casella di testo con anche tasti + e -  e tasto ok\cancel
+tasto per ogni gioctore con icona della croce verde per aprire il pop up
+
+3.lo storico degli eventi per ogni giocatore
+
+
+4.sfondo effeto pergamena
+  cerca background su google
+  finestre pop up con effetto pergamena
+
+
+5. nel game, posso modificare a mano l'init dei giocatori del party
+   poi, devo poter cliccare su roll per calcolare automaticamente l'init dei mostri 
+   la tabella si riordina tenendo conto del risultato e non cambiando i valori di init dei giocatori
+   in ogni caso l'ordinamento della tabella si riaggiorna ogni volta che:
+   - modifico manualmente un giocatore
+   - premo il roll automatico per i mostri
+
+DONE
+6. rendere la tabella editabile in tabella senza dover aprire dei pop up
+
+
+7. inserimento turni dal turno 0
+   visualizzare in game in una porzione dello schermo l'avanzamento del turno
+   ci sarà una sorta di HUD per il master con:
+   - label che indica ad es: Turno 1
+   accanto alla label due tasti frecce avanti e indietro
+   se premo avanti si seleziona la riga immediatamente sotto
+   se premo indietro si seleziona la riga immediatamente sopra
+   se arrivo a ultima riga e premo avanti, Turno 1 diventa Turno 2 e si seleziona in automatico il primo della lista
+   se premo indietro fino alla prima riga e premo ancora indietro, ad es passo da Turno 1 a Turno 0 (possibilità di tornare indietro nei turni)
+
+
+8. quando mostro chiamato "pippo" scende a 0 hp compare pop up:
+   "Il Mostro Pippo è morto, eliminare dalla lista?" tasti Ok Cancel
+   Quando un mostro muore, registrarlo nello storico
+   Se premo Ok/cancel registro anche Master Stefano ha deciso di non eliminare mostro Pippo
+
+9. aggiunta multipla mostri
+   posibilità inserire quantità
+   massimale hp
+   valore modificatore iniziativa
+   eseguire il roll automatico all'Ok
+   Esempio: aggiungo 3 mostri "Cactus". Premo ok, viene calcolato il roll per questi 3 e 
+   la tabella si riordina in automatico sulla base di questi tre nuovi valori di iniziativa inseriti
+   Nota bene: l'esempio citato, ovvero l'aggiunta dei mostri, è un qualcosa che si fa tipicamente a inizio game
+   all'ok, se inserisco 3 mostri goblin, verranno chiamati goblin 1, goblin 2, goblin 3.
+
+10. cose a Timing
+    Mostro 2/giocatore avvelenato per x turni
+    Inserisco veleno per 2 turni come nota sul giocatore/mostro
+    Mostrare un icona che rappresenti lo stato temporaneo+ numero turni rimanenti
+    se vado sopra con mouse, durante il turno mostrare tooltip "Mostro avvelenato ancora per 2 turni"
+    se vado sopra con mouse, al turno successivo mostrare tooltip "Mostro avvelenato ancora per 1 turni"
+    se clicco l'icona, posso modificare l'effetto temporaneo: esempio:
+    - ho sbagliato a inserire poison 3 turni
+    - posso modificarlo scrivendo poison 2 turni e confermare
+
+10bis. Poter inserire effetto globale a timing: tipo tempesta di neve
+       copia da punto 10.
+       Differisce perché coinvolge tutti e non il singolo giocatore/mostro
+       Rendere come:
+       - giocatore fittizio in alto per la durata dell'effetto
+       oppure:
+       - inserire effetto tra due giocatori
+         
+    
+11. Iconcina per inserire una nota globale libera

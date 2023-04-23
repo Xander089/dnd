@@ -1,0 +1,42 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+}
+
+/* button {
+  min-height: 2.5rem;
+} */
+button:focus,
+button:hover {
+  outline: none;
+}
+.buttonSelected {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-left: 1.5rem solid var(--red);
+  transform: scale(1.1);
+}
+
+input {
+  margin: 0 1rem;
+  width: 90%;
+  height: 2rem;
+  border: 1px solid #ddd;
+  padding: 0 0.5em;
+  border-radius: 4px;
+}
+
+h3 {
+  margin: 0 1rem;
+  width: 90%;
+  padding: 0.5em;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+ul {
+  list-style-type: none;
+}

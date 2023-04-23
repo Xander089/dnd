@@ -1,0 +1,181 @@
+.tab {
+  /* background-color: #fcd34d; */
+  border-bottom: 1px solid #bbb;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  grid-column: 2/20;
+  grid-row: 2/12;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.monster-tab-sub-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.tab-right {
+}
+
+.left-small {
+  grid-column: 3/14;
+}
+
+.right-small {
+  grid-column: 2/20;
+}
+.left-small-right-small {
+  grid-column: 2/20;
+}
+
+.tab-container,
+.member-surrounder {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  /* overflow: scroll; */
+}
+
+.tab-container > div {
+  padding: 0;
+}
+
+.add-button {
+  height: 0;
+  margin-top: 1.1rem;
+  margin-left: 1.5rem;
+}
+.add-button-monsters {
+  height: 2rem;
+  width: 5rem;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+.button-trash-container {
+  width: 60%;
+  display: flex;
+  justify-content: end;
+  padding: 0 1rem;
+}
+
+.member-border {
+  border-radius: 6px;
+  max-height: 600;
+  border: 1px solid #bbb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: max-height 1s ease-in-out;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.25rem 0;
+  padding-bottom: 0.6rem;
+  position: relative;
+}
+.memberSelected {
+  border-radius: 6px;
+  border: 3px solid var(--red);
+}
+
+.larger-container {
+  max-width: 6rem;
+}
+
+.member .input-container {
+  max-width: 6rem;
+}
+
+.member .input-name {
+  max-width: 10rem;
+}
+
+.member .party-name {
+  min-width: 8rem;
+}
+
+.member-header .input-container {
+  min-width: 4rem;
+}
+
+.input-container h3 {
+  border-radius: 6px;
+}
+
+.member .damage-button {
+  margin-left: 1.5rem;
+}
+
+.member-button {
+  margin-top: 1.2rem;
+}
+
+.accordion {
+  position: absolute;
+  top: 50;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.accordionOpen {
+  animation: openAccordion 0.6s ease-out forwards;
+}
+.accordionClosed {
+  animation: closeAccordion 0.6s ease-out forwards;
+}
+
+@keyframes openAccordion {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes closeAccordion {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.other-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.other-stats .input-container {
+  max-width: 6rem;
+}
+
+.other-stats .input-container label {
+}
+
+.stat-label {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  margin-left: 1.2rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.member .input-container-check {
+  min-width: 5rem;
+  height: 3.5rem;
+}
+
+.input-container-check input {
+  height: 1rem;
+}
+
+.player-search {
+  width: 20rem;
+  margin-left: 1rem;
+}
