@@ -135,7 +135,7 @@ function Member(props: any) {
     handleStats(newHp); //scrive in local storage
     props?.applyCureDamageToPlayers(getCurrentPlayer(newHp)); //refresh dei players
 
-    const heal = sign > 0 ? "applica una cura" : "applica una ferita";
+    const heal = sign > 0 ? " applica una cura" : " applica una ferita";
     props?.addHistoryRecord(
       "Il master" + heal + " a " + player?.name + " di " + amount + " punti"
     );

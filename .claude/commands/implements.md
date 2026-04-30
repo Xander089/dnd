@@ -1,4 +1,4 @@
 - leggi il file todo.md nella root del progetto
 - contiene una lista di cose da fixare o implementare
 - quando chiamo questo comando claude deve prendere il primo task della lista (i task inizano con carattere '-') e tentare di eseguire quel bug fix oppure implementare quello che c'è scritto.
-- al termine, nel file todo, marca la riga completare sostituendo il carattere iniziale '-' con il carattere '#'
+- al termine, nel file todo, marca la riga completata aggiungendo dopo il carattere '-' un carattere '!' per indicarne il completamento

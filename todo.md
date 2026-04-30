@@ -1,1 +1,13 @@
-# sto tentando di pushare questo progetto su cloudflare ma ricevo questo errore: come faccio a aggiornare vite, puoi aiutarmi nel farlo? ✘ [ERROR] The version of Vite used in the project ("4.1.1") cannot be automatically configured. Please update the Vite version to at least "6.0.0" and try again.
+- ! sto tentando di pushare questo progetto su cloudflare ma ricevo questo errore: come faccio a aggiornare vite, puoi aiutarmi nel farlo? ✘ [ERROR] The version of Vite used in the project ("4.1.1") cannot be automatically configured. Please update the Vite version to at least "6.0.0" and try again.
+- ! le immagini in scr/assets nel sito deployato non si vedono. può dipendere da cloudflare? come risolvo?
+- nella sezione "Game", sulla singola riga, sia esso un membro del party o un monster, devo poter avere la possibilità di aggiungere più di uno status. Attualmente c'è un singolo status per giocatore
+- per i mostri, iniziativa diventa Modificatore iniziativa. Nella finestra di aggiunta mostri in game, inserire campo "iniziativa" number. Se lo lascio a zero, l'iniziativa in game è mod + rand(1..20). Se invece inserisco un numero, allora iniziativa in game = quel numero + modificatore.
+- la finestra Damage, mantiene l'ultimo danno inserito. è un bug: bisogna riportarlo a vuoto. Anche all'aprima apertura, anziché zero, sarebbe bello che fosse vuoto e non pre inizializzato a zero.
+- la finestra di selezione mostri non si resetta (bug)
+- la durata status del singolo giocatore deve essere ritarata su turn e non su step (bug)
+- sezione Mostri: aggiungere una sezione espandibile con dei nuovi campi: vedi foglio. 
+    - cose fisse: CA (numero), tratti speciali (stringa), azioni (stringa), tipo di mostro e allineamento (stringhe)
+    - cose variabili: tiri salvezza (), abilità, resistenza di danni, immunità danni, immunità condizioni, sensi, grado sfida, bonus competenza, punti esperienza (numero), azioni bonus, azioni leggendarie, reazioni
+- ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
+- colorazione rossa o verde a fine cura o danno rispettivamente
+- nella history, orario in cui viene eseguita l'azione
