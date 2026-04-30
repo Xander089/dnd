@@ -1,0 +1,1 @@
+# sto tentando di pushare questo progetto su cloudflare ma ricevo questo errore: come faccio a aggiornare vite, puoi aiutarmi nel farlo? ✘ [ERROR] The version of Vite used in the project ("4.1.1") cannot be automatically configured. Please update the Vite version to at least "6.0.0" and try again.
