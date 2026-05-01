@@ -7,7 +7,7 @@ import ChooseMonsters from "./components/dialogs/ModalChooseMonsters";
 import Party from "./components/Party";
 import Monsters from "./components/Monsters";
 import Grimoire from "./components/Grimoire";
-import { Dao, History } from "./data/write";
+import { Dao, DefeatedMonsters, History } from "./data/write";
 import { Game } from "./types/Game";
 import { ViewModel } from "./ViewModel";
 import { Player } from "./types/GameTypes";
@@ -29,6 +29,7 @@ function App() {
   const [collapse, setCollapse] = useState(true);
   const [game, setGame] = useState(Dao.getGame() as Game);
   const [history, setHistory] = useState(History.getAll());
+  const [defeatedLog, setDefeatedLog] = useState(DefeatedMonsters.getAll());
   const [monstersCategories, setMonstersCategories] = useState(
     ViewModel.sort(ViewModel.getCategories())
   );
@@ -36,6 +37,11 @@ function App() {
   const addHistoryRecord = (sentence: string) => {
     History.addLine(sentence);
     setHistory(History.getAll());
+  };
+
+  const addDefeatedLog = (entry: string) => {
+    DefeatedMonsters.addEntry(entry);
+    setDefeatedLog(DefeatedMonsters.getAll());
   };
 
   const refreshMonstersCategories = () => {
@@ -189,6 +195,8 @@ function App() {
           applyGlobalEffect={applyGlobalEffect}
           history={history}
           addHistoryRecord={addHistoryRecord}
+          defeatedLog={defeatedLog}
+          addDefeatedLog={addDefeatedLog}
           applyCureDamageToPlayers={applyCureDamageToPlayers}
           removePlayer={removePlayer}
           applyManualRoll={applyManualRoll}

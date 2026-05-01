@@ -12,6 +12,7 @@ import { Player, PlayerStatus } from "../types/GameTypes";
 import DamageCure from "./dialogs/ModalDamageCure";
 import { Dao } from "../data/write";
 import Note from "./Note";
+import DefeatedLog from "./DefeatedLog";
 import History from "./History";
 import Header from "./Header";
 import ModalGlobalEffect from "./dialogs/ModalGlobalEffect";
@@ -62,11 +63,13 @@ function Table(props: any) {
                   refreshPlayers={props?.refreshPlayers}
                   removePlayer={props?.removePlayer}
                   addHistoryRecord={props?.addHistoryRecord}
+                  addDefeatedLog={props?.addDefeatedLog}
                 />
               ))}
             </div>
             <div className={expand ? "tab-right-hidden" : ""}>
               <Note collapse={false} />
+              <DefeatedLog entries={props?.defeatedLog ?? []} />
               <History
                 collapse={false}
                 game={props?.game}
@@ -147,6 +150,12 @@ function Member(props: any) {
   function removePlayer() {
     props?.removePlayer(player?.id, player?.type);
     props?.addHistoryRecord("il master rimuove " + player?.name + " dal game");
+    if (player?.type === "monster") {
+      const exp = player?.monsterProperties?.exp ?? 0;
+      props?.addDefeatedLog?.(
+        `Type: ${player.category} - Name: ${player.name} - EXP: ${exp}`
+      );
+    }
   }
 
   const handleAutomaticRemove = (hpValue: number) => {

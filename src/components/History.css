@@ -18,19 +18,23 @@
   z-index: -1;
 }
 .history-title {
-  position: relative;
   border: 1px solid rgb(118, 118, 118);
   border-radius: 2px;
 }
-.history-title::before {
-  position: absolute;
-  content: "History";
-  top: -4%;
-  left: 0.5rem;
-  background: var(--yellow-light);
 
-  padding: 0 0.2rem;
-  z-index: 10;
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+  user-select: none;
+}
+
+.collapsible-header:hover {
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .history p {

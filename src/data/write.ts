@@ -271,6 +271,19 @@ export class Dao {
   }
 }
 
+export class DefeatedMonsters {
+  static #key = "DefeatedMonsters";
+
+  static getAll(): string[] {
+    return JSON.parse(localStorage.getItem(this.#key) ?? "[]");
+  }
+
+  static addEntry(entry: string): void {
+    const current = this.getAll();
+    localStorage.setItem(this.#key, JSON.stringify([...current, entry]));
+  }
+}
+
 export class History {
   static #history = "History";
   static getAll(end: number = 100): string[] {
