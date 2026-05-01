@@ -286,8 +286,9 @@ export class DefeatedMonsters {
 
 export class History {
   static #history = "History";
+  static #lastDateKey = "HistoryLastDate";
+
   static getAll(end: number = 100): string[] {
-    //faccio sì che la storia non restituisca + di 100 elementi
     const history = JSON.parse(
       localStorage?.getItem(this.#history) ?? "[]"
     ) as string[];
@@ -296,11 +297,49 @@ export class History {
 
   static deleteAll() {
     localStorage?.removeItem(this.#history);
+    localStorage?.removeItem(this.#lastDateKey);
   }
-  static addLine(line: string) {
+
+  static #time(): string {
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2, "0");
+    const m = now.getMinutes().toString().padStart(2, "0");
+    return `[${h}:${m}]`;
+  }
+
+  static #date(): string {
+    const now = new Date();
+    const d = now.getDate().toString().padStart(2, "0");
+    const mo = (now.getMonth() + 1).toString().padStart(2, "0");
+    return `${d}/${mo}/${now.getFullYear()}`;
+  }
+
+  static #insert(line: string) {
     localStorage?.setItem(
       this.#history,
-      JSON.stringify([line, ...this.getAll(99)]) //faccio sì che la storia non contenga + di 100 elementi
+      JSON.stringify([line, ...this.getAll(99)])
     );
+  }
+
+  static #checkMidnight() {
+    const today = new Date().toDateString();
+    const last = localStorage.getItem(this.#lastDateKey);
+    if (last && last !== today) {
+      this.#insert(`🕛 Mezzanotte — ${this.#date()}`);
+    }
+    localStorage.setItem(this.#lastDateKey, today);
+  }
+
+  static addLine(line: string) {
+    this.#checkMidnight();
+    this.#insert(`${this.#time()} ${line}`);
+  }
+
+  static addSessionStart() {
+    this.#checkMidnight();
+    const now = new Date();
+    const h = now.getHours().toString().padStart(2, "0");
+    const m = now.getMinutes().toString().padStart(2, "0");
+    this.#insert(`▶ Sessione — ${this.#date()} ${h}:${m}`);
   }
 }

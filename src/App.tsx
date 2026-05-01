@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import "./App.css";
 import Table from "./components/Table";
@@ -11,6 +11,8 @@ import { Dao, DefeatedMonsters, History } from "./data/write";
 import { Game } from "./types/Game";
 import { ViewModel } from "./ViewModel";
 import { Player } from "./types/GameTypes";
+
+let sessionStartLogged = false;
 
 function App() {
   // ViewModel.reset();
@@ -30,6 +32,14 @@ function App() {
   const [game, setGame] = useState(Dao.getGame() as Game);
   const [history, setHistory] = useState(History.getAll());
   const [defeatedLog, setDefeatedLog] = useState(DefeatedMonsters.getAll());
+
+  useEffect(() => {
+    if (!sessionStartLogged) {
+      sessionStartLogged = true;
+      History.addSessionStart();
+      setHistory(History.getAll());
+    }
+  }, []);
   const [monstersCategories, setMonstersCategories] = useState(
     ViewModel.sort(ViewModel.getCategories())
   );
