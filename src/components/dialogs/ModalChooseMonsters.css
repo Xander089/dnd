@@ -27,19 +27,22 @@
 }
 
 .monster-category-row {
-  width: 80%;
-
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 3.5rem 2fr 1fr 1fr;
   align-items: center;
-}
-.monster-category-row p,
-.monster-category-row input {
-  margin: 0;
-  padding: 0;
+  gap: 0.5rem;
 }
 .monster-category-row p {
-  width: 4rem;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.monster-category-row input[type="number"] {
+  margin: 0;
+  padding: 0 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-title {
@@ -68,18 +71,25 @@
 
 .choose-monsters-header {
   margin-top: 1rem;
-  width: 80%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 3.5rem 2fr 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .choose-monsters-header p {
   margin: 0;
   padding: 0;
   color: #888;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .select-monster-checkbox {
   height: 1rem;
-  width: 2rem;
+  width: 1.2rem;
+  margin: 0;
+  justify-self: start;
 }

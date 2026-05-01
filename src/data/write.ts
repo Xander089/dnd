@@ -39,7 +39,7 @@ export class Dao {
         strength: selectedCategory.strength,
         dexterity: selectedCategory.dexterity,
         constitution: selectedCategory.constitution,
-        intelligence: selectedCategory.initiative,
+        intelligence: selectedCategory.intelligence,
         wisdom: selectedCategory.wisdom,
         charisma: selectedCategory.charisma,
         isPlaying: true,

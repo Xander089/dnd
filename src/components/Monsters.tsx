@@ -332,7 +332,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Initiative</p>
+          <p className="stat-label">Init. Mod</p>
 
           <input
             type={"number"}

@@ -57,6 +57,9 @@ function ChooseMonsters(props: any) {
           <b>Type</b>
         </p>
         <p>
+          <b>Initiative</b>
+        </p>
+        <p>
           <b>Quantity</b>
         </p>
       </div>
@@ -78,6 +81,11 @@ function ChooseMonsters(props: any) {
                 onChange={() => props?.handleSelection(!it?.isSelected, it?.id)}
               ></input>
               <p>{it.category}</p>
+              <input
+                type={"number"}
+                value={it.initiative}
+                onChange={(e: any) =>{}}
+              ></input>
               <input
                 type={"number"}
                 value={it.quantity}

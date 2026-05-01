@@ -89,6 +89,7 @@ export class ViewModel {
       category: oldCategory.category,
       id: oldCategory.id,
       isSelected: isSelected,
+      initiative: oldCategory.initiative,
       quantity: oldCategory.quantity,
     };
     return [...currentCategories, catToUpdate];
@@ -105,6 +106,7 @@ export class ViewModel {
       category: oldCategory.category,
       id: oldCategory.id,
       isSelected: oldCategory.isSelected,
+      initiative: oldCategory.initiative,
       quantity: quantity,
     };
     return [...currentCategories, catToUpdate];
