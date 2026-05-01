@@ -258,7 +258,7 @@ function Member(props: any) {
                   type="text"
                   placeholder="status"
                   value={s.name}
-                  className={s.name !== "" ? (s.duration === 0 ? "status-expired" : "poison") : ""}
+                  className={s.name !== "" ? "poison" : ""}
                   onChange={(e) =>
                     updateStatuses(
                       (player?.statuses ?? []).map((st, j) =>

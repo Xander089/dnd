@@ -21,7 +21,7 @@ function App() {
   const addToast = (message: string) => {
     const id = Date.now();
     setToasts((prev) => [...prev, { id, message }]);
-    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 4000);
+    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 2000);
   };
   const [chooseMonstersVisible, setChooseMonstersVisible] = useState(false);
   const [enlarge, setEnlarge] = useState(false);
@@ -140,13 +140,15 @@ function App() {
   const handleStatusDurationForPlayer = (stepIndex: number) => {
     const player = players[stepIndex];
     if (!player) return;
-    const updatedStatuses = (player.statuses ?? []).map((s) => {
+    const updatedStatuses = (player.statuses ?? [])
+    .map((s) => {
       const newDuration = Math.max(0, s.duration - 1);
       if (s.duration === 1) {
         addToast(`${player.name} has no more ${s.name}`);
       }
       return { ...s, duration: newDuration };
-    });
+    })
+    .filter((s) => s.duration > 0);
     const updatedPlayer = { ...player, statuses: updatedStatuses };
     Dao.writePlayer(updatedPlayer);
     setPlayers(
