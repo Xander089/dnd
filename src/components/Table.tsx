@@ -5,8 +5,6 @@ import cross from "../assets/green-cross-icon.png";
 import trash from "../assets/trash3.png";
 import warrior from "../assets/warrior.png";
 import orc from "../assets/orc.png";
-import arrowDown from "../assets/arrow-down.png";
-import arrowUp from "../assets/arrow-up.png";
 import CustomIcon from "./layout/CustomIcon";
 import { Player, PlayerStatus } from "../types/GameTypes";
 import DamageCure from "./dialogs/ModalDamageCure";
@@ -351,13 +349,12 @@ function Member(props: any) {
               marginTop: "0.5rem",
               background: "transparent",
               border: "none",
+              cursor: "pointer",
+              fontSize: "1rem",
             }}
             onClick={handleAccordion}
           >
-            <CustomIcon
-              size="18px"
-              bg={accordionOpen ? arrowUp : arrowDown}
-            ></CustomIcon>
+            {accordionOpen ? "▲" : "▼"}
           </button>
         </div>
       </div>
