@@ -7,7 +7,15 @@
 - la durata status del singolo giocatore deve essere ritarata su turn e non su step (bug)
 - sezione Mostri: aggiungere una sezione espandibile con dei nuovi campi: vedi foglio. 
     - cose fisse: CA (numero), tratti speciali (stringa), azioni (stringa), tipo di mostro e allineamento (stringhe)
-    - cose variabili: tiri salvezza (), abilità, resistenza di danni, immunità danni, immunità condizioni, sensi, grado sfida, bonus competenza, punti esperienza (numero), azioni bonus, azioni leggendarie, reazioni
+    - cose variabili: tiri salvezza (), abilità, resistenza di danni, immunità danni, immunità condizioni, sensi, grado sfida, bonus competenza, punti esperienza (numero), azioni bonus, azioni leggendarie, reazioni + incantesimi: per loro simbolo "@" selezione multi selection. se digito un incantesimo ne compare un'altra @. In game ho un mostro che ha N incantesimi selezionati alla creazione, se clicco sopra uno, vedo il dettaglio dell'incantesimo
+
 - ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
 - colorazione rossa o verde a fine cura o danno rispettivamente
-- nella history, orario in cui viene eseguita l'azione
+- nella history, orario in cui viene eseguita l'azione (ogni step) + data iniziale game + segnare la data se si supera la mezzanotte, o se si riprende un game in un giorno diverso da quello iniziato
+- nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
+- style: pergamena
+- nel menu a sinistra inserire grimorio degli incantesimi: 
+    - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
+    - nella sezione mostri ho il flag "incantesimi".
+    - se per un mostro ho flaggato, nel campo
+- correggere avanazamento turni (no tasto back)

@@ -54,13 +54,13 @@ function Hud(props: any) {
     <div className={className}>
       <div className="hud-container">
         <div className="hud-left-buttons">
-          <button
+          {/* <button
             className="hud-arrow"
             style={{ width: "2.5rem" }}
             onClick={handleDecrement}
           >
             <CustomIcon bg={back} />
-          </button>
+          </button> */}
 
           <button
             className="hud-arrow"
