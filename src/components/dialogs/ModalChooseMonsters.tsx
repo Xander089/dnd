@@ -83,8 +83,10 @@ function ChooseMonsters(props: any) {
               <p>{it.category}</p>
               <input
                 type={"number"}
-                value={it.initiative}
-                onChange={(e: any) =>{}}
+                value={it.manualRoll}
+                onChange={(e: any) =>
+                  props?.handleManualRoll(e.target.value, it?.id)
+                }
               ></input>
               <input
                 type={"number"}

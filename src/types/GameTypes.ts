@@ -29,5 +29,6 @@ export type MonsterSelection = {
   category: string;
   isSelected: boolean;
   initiative: number;
+  manualRoll: number;
   quantity: number;
 };

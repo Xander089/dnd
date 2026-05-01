@@ -35,7 +35,7 @@ export class Dao {
         type: "monster",
         hp: selectedCategory.hp,
         currentHp: selectedCategory.currentHp,
-        initiative: Math.ceil(Math.random() * 20), //roll initiative
+        initiative: parseInt(selectedCategory.initiative + "") + (parseInt(category.manualRoll + "") > 0 ? parseInt(category.manualRoll + "") : Math.ceil(Math.random() * 20)),
         strength: selectedCategory.strength,
         dexterity: selectedCategory.dexterity,
         constitution: selectedCategory.constitution,

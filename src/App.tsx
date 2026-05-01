@@ -63,6 +63,15 @@ function App() {
     );
   };
 
+  const handleManualRoll = (manualRoll: any, id: number) => {
+    const roll = parseInt(manualRoll) || 0;
+    setMonstersCategories(
+      ViewModel.sort(
+        ViewModel.updateManualRoll(monstersCategories, id, roll)
+      )
+    );
+  };
+
   const addMonstersToGame = () => {
     Dao.addMonstersToGame(monstersCategories);
     setPlayers(ViewModel.getPlayersInitialState());
@@ -217,6 +226,7 @@ function App() {
         monstersCategories={monstersCategories}
         handleSelection={handleSelection}
         handleQuantity={handleQuantity}
+        handleManualRoll={handleManualRoll}
         addMonstersToGame={addMonstersToGame}
         refreshGame={refreshGame}
         resetCategories={refreshMonstersCategories}

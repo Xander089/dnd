@@ -73,6 +73,7 @@ export class ViewModel {
           category: it.category,
           initiative: it.initiative,
           isSelected: false,
+          manualRoll: 0,
           quantity: 0,
         };
       }) as MonsterSelection[];
@@ -90,6 +91,7 @@ export class ViewModel {
       id: oldCategory.id,
       isSelected: isSelected,
       initiative: oldCategory.initiative,
+      manualRoll: oldCategory.manualRoll,
       quantity: oldCategory.quantity,
     };
     return [...currentCategories, catToUpdate];
@@ -107,7 +109,26 @@ export class ViewModel {
       id: oldCategory.id,
       isSelected: oldCategory.isSelected,
       initiative: oldCategory.initiative,
+      manualRoll: oldCategory.manualRoll,
       quantity: quantity,
+    };
+    return [...currentCategories, catToUpdate];
+  }
+
+  static updateManualRoll(
+    cat: MonsterSelection[],
+    id: number,
+    manualRoll: number
+  ): MonsterSelection[] {
+    const currentCategories = cat.filter((it) => it.id !== id);
+    const oldCategory = cat.filter((it) => it.id === id)[0];
+    const catToUpdate: MonsterSelection = {
+      category: oldCategory.category,
+      id: oldCategory.id,
+      isSelected: oldCategory.isSelected,
+      initiative: oldCategory.initiative,
+      manualRoll: manualRoll,
+      quantity: oldCategory.quantity,
     };
     return [...currentCategories, catToUpdate];
   }
