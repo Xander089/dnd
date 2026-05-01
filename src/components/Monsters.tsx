@@ -12,7 +12,7 @@ import { ViewModel } from "../ViewModel";
 type MonsterCategory = Partial<
   Omit<
     Player,
-    "id" | "name" | "sortIndex" | "status" | "statusDuration" | "isPlaying"
+    "id" | "name" | "sortIndex" | "statuses" | "isPlaying"
   >
 >;
 export default function Monsters(props: any) {
@@ -108,8 +108,7 @@ function Member(props: any) {
       wisdom: wisdom,
       charisma: charisma,
       isPlaying: player?.isPlaying,
-      status: player?.status,
-      statusDuration: player?.statusDuration,
+      statuses: player?.statuses ?? [],
       sortIndex: player?.sortIndex,
     });
   };
@@ -252,8 +251,7 @@ function AddMember(props: any) {
       ...category,
       isPlaying: false,
       name: "",
-      status: "",
-      statusDuration: 0,
+      statuses: [],
       type: "monster",
       sortIndex: -1,
     });

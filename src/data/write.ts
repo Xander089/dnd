@@ -3,19 +3,17 @@ import { MonsterSelection, Player } from "../types/GameTypes";
 
 export class Dao {
   static updateStatusDuration(step: number) {
-    const playingAndStatusActive = [
+    const playingWithStatuses = [
       ...this.getPlayers("player"),
       ...this.getPlayers("monster"),
-    ]?.filter((p) => p.isPlaying && p.statusDuration > 0);
-    //se premo avanti step = 1 e decremento la duration
-    //se premo indietro step = -1 e incremento la duration
-    playingAndStatusActive?.forEach((p) => {
-      p.statusDuration -= step;
-      if (p.statusDuration === 0) {
-        p.status = "";
-      }
+    ]?.filter((p) => p.isPlaying && (p.statuses ?? []).some((s) => s.duration > 0));
+
+    playingWithStatuses?.forEach((p) => {
+      p.statuses = (p.statuses ?? [])
+        .map((s) => ({ ...s, duration: s.duration - step }))
+        .filter((s) => s.duration > 0);
     });
-    playingAndStatusActive?.forEach((p) => this.writePlayer(p));
+    playingWithStatuses?.forEach((p) => this.writePlayer(p));
   }
 
   static addMonstersToGame(categories: MonsterSelection[]) {
@@ -45,8 +43,7 @@ export class Dao {
         wisdom: selectedCategory.wisdom,
         charisma: selectedCategory.charisma,
         isPlaying: true,
-        status: "",
-        statusDuration: 0,
+        statuses: [],
       };
       this.addPlayer(stamp);
       i += 1;
@@ -81,8 +78,7 @@ export class Dao {
         wisdom: player?.wisdom,
         charisma: player?.charisma,
         isPlaying: false,
-        status: player?.status,
-        statusDuration: player?.statusDuration,
+        statuses: player?.statuses ?? [],
       };
       this.writePlayer(newPlayer);
     }

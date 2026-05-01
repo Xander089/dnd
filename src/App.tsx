@@ -98,9 +98,7 @@ function App() {
       intelligence: playerToChange?.intelligence,
       isPlaying: playerToChange?.isPlaying,
       name: playerToChange?.name,
-      status: key === "status" ? value : playerToChange?.status,
-      statusDuration:
-        key === "statusDuration" ? value : playerToChange?.statusDuration,
+      statuses: key === "statuses" ? value : playerToChange?.statuses ?? [],
       strength: playerToChange?.strength,
       type: playerToChange?.type,
       wisdom: playerToChange?.wisdom,

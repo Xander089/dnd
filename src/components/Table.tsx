@@ -8,7 +8,7 @@ import orc from "../assets/orc.png";
 import arrowDown from "../assets/arrow-down.png";
 import arrowUp from "../assets/arrow-up.png";
 import CustomIcon from "./layout/CustomIcon";
-import { Player } from "../types/GameTypes";
+import { Player, PlayerStatus } from "../types/GameTypes";
 import DamageCure from "./dialogs/ModalDamageCure";
 import { Dao } from "../data/write";
 import Note from "./Note";
@@ -110,8 +110,7 @@ function Member(props: any) {
       wisdom: player?.wisdom,
       charisma: player?.charisma,
       isPlaying: player?.isPlaying,
-      status: player?.status,
-      statusDuration: player?.statusDuration,
+      statuses: player?.statuses ?? [],
       sortIndex: player?.sortIndex,
     };
   }
@@ -163,6 +162,11 @@ function Member(props: any) {
       return "almost-faint";
     }
     return "";
+  };
+
+  const updateStatuses = (updated: PlayerStatus[]) => {
+    props?.refreshPlayers("statuses", updated, player?.id);
+    Dao.writePlayer({ ...getCurrentPlayer(), statuses: updated });
   };
 
   const selectedClassName = !props?.isSelected ? "" : " memberSelected";
@@ -245,47 +249,62 @@ function Member(props: any) {
             onBlur={() => handleStats()}
           ></input>
         </div>
-        <div className="input-container">
-          <p className="stat-label">Status</p>
-          <input
-            type={"text"}
-            className={(player?.status ?? "") !== "" ? "poison" : ""}
-            placeholder="Status"
-            value={player?.status}
-            onChange={(event: any) => {
-              props?.refreshPlayers("status", event?.target.value, player?.id);
-              props?.addHistoryRecord(
-                "Il master modifica lo status di " +
-                  player?.name +
-                  " a " +
-                  event?.target.value
-              );
-            }}
-            onBlur={() => handleStats()}
-          ></input>
-        </div>
-        <div className="input-container">
-          <p className="stat-label">Duration</p>
-          <input
-            type={"number"}
-            placeholder="Duration"
-            value={player?.statusDuration}
-            onChange={(event: any) => {
-              props?.refreshPlayers(
-                "statusDuration",
-                event?.target.value,
-                player?.id
-              );
-              props?.addHistoryRecord(
-                "Il master modifica la durata dello status di " +
-                  player?.name +
-                  " a " +
-                  event?.target.value +
-                  " step"
-              );
-            }}
-            onBlur={() => handleStats()}
-          ></input>
+        <div className="statuses-container">
+          <p className="stat-label">Statuses</p>
+          <div className="statuses-list">
+            {(player?.statuses ?? []).map((s, i) => (
+              <div key={i} className="status-entry">
+                <input
+                  type="text"
+                  placeholder="status"
+                  value={s.name}
+                  className={s.name !== "" ? "poison" : ""}
+                  onChange={(e) =>
+                    updateStatuses(
+                      (player?.statuses ?? []).map((st, j) =>
+                        j === i ? { ...st, name: e.target.value } : st
+                      )
+                    )
+                  }
+                />
+                <input
+                  type="number"
+                  placeholder="turns"
+                  value={s.duration}
+                  onChange={(e) =>
+                    updateStatuses(
+                      (player?.statuses ?? []).map((st, j) =>
+                        j === i
+                          ? { ...st, duration: parseInt(e.target.value) || 0 }
+                          : st
+                      )
+                    )
+                  }
+                />
+                <button
+                  className="status-remove-btn"
+                  onClick={() =>
+                    updateStatuses(
+                      (player?.statuses ?? []).filter((_, j) => j !== i)
+                    )
+                  }
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+            <button
+              className="status-add-btn"
+              onClick={() =>
+                updateStatuses([
+                  ...(player?.statuses ?? []),
+                  { name: "", duration: 0 },
+                ])
+              }
+            >
+              +
+            </button>
+          </div>
         </div>
         <button
           style={{

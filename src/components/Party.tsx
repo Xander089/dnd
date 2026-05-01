@@ -83,8 +83,7 @@ function Member(props: any) {
   const [charisma, setCharisma] = useState(player?.charisma);
   const [wisdom, setWisdom] = useState(player?.wisdom);
   const [playing, setPlaying] = useState(player?.isPlaying);
-  const [status, setStatus] = useState(player?.status);
-  const [statusDuration, setStatusDuration] = useState(player?.statusDuration);
+  const [statuses, setStatuses] = useState(player?.statuses ?? []);
 
   const [deleteVisible, setDeleteVisible] = useState(false);
 
@@ -104,8 +103,7 @@ function Member(props: any) {
       wisdom: wisdom,
       charisma: charisma,
       isPlaying: togglePlaying !== undefined ? togglePlaying : playing,
-      status: status,
-      statusDuration: statusDuration,
+      statuses: statuses,
     });
   };
 
@@ -309,8 +307,7 @@ function AddMember(props: any) {
       isPlaying: player?.isPlaying,
       name: player?.name,
       strength: player?.strength,
-      status: player?.status,
-      statusDuration: player?.statusDuration,
+      statuses: player?.statuses ?? [],
       type: "player",
       wisdom: player?.wisdom,
     });
@@ -360,9 +357,7 @@ function AddMember(props: any) {
       id: player?.id,
       isPlaying: property === "isPlaying" ? value : player?.isPlaying,
       name: property === "name" ? value : player?.name,
-      status: property === "status" ? value : player?.status,
-      statusDuration:
-        property === "statusDuration" ? value : player?.statusDuration,
+      statuses: player?.statuses ?? [],
     };
     setPlayer(playerToUpdate);
   };

@@ -1,3 +1,8 @@
+export type PlayerStatus = {
+  name: string;
+  duration: number;
+};
+
 export type Player = {
   id: number;
   name: string;
@@ -13,8 +18,7 @@ export type Player = {
   wisdom: number;
   charisma: number;
   isPlaying: boolean;
-  status: string;
-  statusDuration: number;
+  statuses: PlayerStatus[];
   sortIndex?: number;
 };
 

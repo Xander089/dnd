@@ -22,15 +22,15 @@ function Hud(props: any) {
     }
   };
 
-  const handleDecrement = () => {
-    const game = decrement(props?.game);
-    Dao.writeGame(game);
-    Dao.updateGameEffect("", 0); //se torno indietro azzero l'effetto globale
-    props?.setGame(Dao.getGame());
+  // const handleDecrement = () => {
+  //   const game = decrement(props?.game);
+  //   Dao.writeGame(game);
+  //   Dao.updateGameEffect("", 0); //se torno indietro azzero l'effetto globale
+  //   props?.setGame(Dao.getGame());
 
-    props?.addHistoryRecord("Il Master torna al turno precedente");
-    props?.handleStatusDuration(-1);
-  };
+  //   props?.addHistoryRecord("Il Master torna al turno precedente");
+  //   props?.handleStatusDuration(-1);
+  // };
 
   const handleReset = () => {
     Dao.resetGame();
