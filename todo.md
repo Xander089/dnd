@@ -17,4 +17,4 @@
 - nel menu a sinistra inserire grimorio degli incantesimi: 
     - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
     - nella sezione mostri ho il flag "incantesimi".
-    - se per un mostro ho flaggato, nel campo
+    - se per un mostro ho flaggato, nel campo in game se lo clicco vedo

@@ -1,5 +1,5 @@
 import { Game } from "../types/Game";
-import { MonsterSelection, Player } from "../types/GameTypes";
+import { MonsterSelection, Player, Spell } from "../types/GameTypes";
 
 export class Dao {
   static updateStatusDuration(step: number) {
@@ -241,6 +241,32 @@ export class Dao {
 
   static resetGame() {
     localStorage.setItem("TheGame", JSON.stringify(this.getEmptyGame()));
+  }
+
+  static #spellsKey = "Grimoire";
+
+  static getSpells(): (Spell & { id: number })[] {
+    return JSON.parse(localStorage.getItem(this.#spellsKey) ?? "[]");
+  }
+
+  static addSpell(spell: Spell): Spell & { id: number } {
+    const spells = this.getSpells();
+    const id = spells.length > 0 ? Math.max(...spells.map((s) => s.id)) + 1 : 1;
+    const newSpell = { ...spell, id };
+    localStorage.setItem(this.#spellsKey, JSON.stringify([...spells, newSpell]));
+    return newSpell;
+  }
+
+  static updateSpell(id: number, spell: Spell): void {
+    const spells = this.getSpells().map((s) =>
+      s.id === id ? { ...spell, id } : s
+    );
+    localStorage.setItem(this.#spellsKey, JSON.stringify(spells));
+  }
+
+  static deleteSpell(id: number): void {
+    const spells = this.getSpells().filter((s) => s.id !== id);
+    localStorage.setItem(this.#spellsKey, JSON.stringify(spells));
   }
 }
 

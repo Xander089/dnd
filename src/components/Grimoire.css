@@ -1,0 +1,18 @@
+.spell-row {
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.spell-name-container {
+  min-width: 8rem;
+  max-width: 10rem;
+}
+
+.spell-number {
+  max-width: 5rem;
+}
+
+.spell-effect-container {
+  flex: 1;
+  min-width: 8rem;
+}

@@ -32,3 +32,14 @@ export type MonsterSelection = {
   manualRoll: number;
   quantity: number;
 };
+
+//(nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
+export type Spell = {
+  name: string,
+  school: string,
+  level: number,
+  castingTime: number,
+  range: number,
+  duration: number,
+  effect: string
+}

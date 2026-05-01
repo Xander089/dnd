@@ -4,6 +4,7 @@ import monster from "../assets/monster-page.png";
 import party from "../assets/party.png";
 import game from "../assets/game.png";
 import settings from "../assets/settings.png";
+import scroll from "../assets/scroll.png";
 import CustomIcon from "./layout/CustomIcon";
 
 function Sidebar(props: any) {
@@ -33,6 +34,12 @@ function Sidebar(props: any) {
           onClick={() => props?.setPageSelected(2)}
           image={monster}
           description="Monsters"
+        />
+        <ButtonWithToolTip
+          btnClassName={props?.pageSelected === 3 ? "buttonSelected" : ""}
+          onClick={() => props?.setPageSelected(3)}
+          image={scroll}
+          description="Grimoire"
         />
       </nav>
       <div className="settings tooltip">

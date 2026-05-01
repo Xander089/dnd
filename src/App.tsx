@@ -6,6 +6,7 @@ import Settings from "./components/dialogs/ModalSettings";
 import ChooseMonsters from "./components/dialogs/ModalChooseMonsters";
 import Party from "./components/Party";
 import Monsters from "./components/Monsters";
+import Grimoire from "./components/Grimoire";
 import { Dao, History } from "./data/write";
 import { Game } from "./types/Game";
 import { ViewModel } from "./ViewModel";
@@ -213,6 +214,7 @@ function App() {
       ) : (
         <></>
       )}
+      {pageSelected === 3 ? <Grimoire /> : <></>}
 
       <div className="toast-container">
         {toasts.map((t) => (
