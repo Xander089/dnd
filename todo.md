@@ -1,8 +1,8 @@
 - ! sto tentando di pushare questo progetto su cloudflare ma ricevo questo errore: come faccio a aggiornare vite, puoi aiutarmi nel farlo? ✘ [ERROR] The version of Vite used in the project ("4.1.1") cannot be automatically configured. Please update the Vite version to at least "6.0.0" and try again.
 - ! le immagini in scr/assets nel sito deployato non si vedono. può dipendere da cloudflare? come risolvo?
+-! Quando chiudo la modale relativa a src/components/dialogs/ModalDamageCure.tsx, e successivamente la riapro, ci sono ancora i valori precedentemente inseriti dall'utente. Sarebbe bello che i campi della modale partissero tutti vuoti (come se le variabili fossero null). All'OK o cancel, gli stessi valori vengono comunque salvati con il valore 0 se l'utente non ha inserito nulla nell'input html. 
 - nella sezione "Game", sulla singola riga, sia esso un membro del party o un monster, devo poter avere la possibilità di aggiungere più di uno status. Attualmente c'è un singolo status per giocatore
 - per i mostri, iniziativa diventa Modificatore iniziativa. Nella finestra di aggiunta mostri in game, inserire campo "iniziativa" number. Se lo lascio a zero, l'iniziativa in game è mod + rand(1..20). Se invece inserisco un numero, allora iniziativa in game = quel numero + modificatore.
-- la finestra Damage, mantiene l'ultimo danno inserito. è un bug: bisogna riportarlo a vuoto. Anche all'aprima apertura, anziché zero, sarebbe bello che fosse vuoto e non pre inizializzato a zero.
 - la finestra di selezione mostri non si resetta (bug)
 - la durata status del singolo giocatore deve essere ritarata su turn e non su step (bug)
 - sezione Mostri: aggiungere una sezione espandibile con dei nuovi campi: vedi foglio. 
@@ -18,4 +18,4 @@
     - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
     - nella sezione mostri ho il flag "incantesimi".
     - se per un mostro ho flaggato, nel campo
-- correggere avanazamento turni (no tasto back)
+- ! correggere avanazamento turni (no tasto back)
