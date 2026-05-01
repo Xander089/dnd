@@ -257,7 +257,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="statuses-container">
-          <p className="stat-label">Statuses</p>
+          <p className="stat-label">Status</p>
           <div className="statuses-list">
             {(player?.statuses ?? []).map((s, i) => (
               <div key={i} className="status-entry">
