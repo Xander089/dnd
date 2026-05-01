@@ -244,6 +244,7 @@
   flex-direction: column;
   gap: 0.2rem;
   padding: 0 0.5rem;
+  min-height: 2rem;
 }
 
 .status-entry {
