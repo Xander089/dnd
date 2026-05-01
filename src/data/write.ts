@@ -6,12 +6,12 @@ export class Dao {
     const playingWithStatuses = [
       ...this.getPlayers("player"),
       ...this.getPlayers("monster"),
-    ]?.filter((p) => p.isPlaying && (p.statuses ?? []).some((s) => s.duration > 0));
+    ]?.filter((p) => p.isPlaying && (p.statuses ?? []).some((s) => s.duration >= 0));
 
     playingWithStatuses?.forEach((p) => {
       p.statuses = (p.statuses ?? [])
         .map((s) => ({ ...s, duration: s.duration - step }))
-        .filter((s) => s.duration > 0);
+        .filter((s) => s.duration >= 0);
     });
     playingWithStatuses?.forEach((p) => this.writePlayer(p));
   }

@@ -221,6 +221,10 @@
   font-size: 0.75rem;
 }
 
+.status-expired {
+  border: 1px solid var(--life) !important;
+}
+
 .status-remove-btn,
 .status-add-btn {
   width: 1.4rem;

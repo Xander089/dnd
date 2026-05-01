@@ -16,6 +16,13 @@ function App() {
   const [players, setPlayers] = useState(ViewModel.getPlayersInitialState()); //initial state
   const [pageSelected, setPageSelected] = useState(0);
   const [settingsVisible, setSettingsVisible] = useState(false);
+  const [toasts, setToasts] = useState<{ id: number; message: string }[]>([]);
+
+  const addToast = (message: string) => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message }]);
+    setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 4000);
+  };
   const [chooseMonstersVisible, setChooseMonstersVisible] = useState(false);
   const [enlarge, setEnlarge] = useState(false);
   const [collapse, setCollapse] = useState(true);
@@ -130,6 +137,26 @@ function App() {
     setPlayers(ViewModel.getPlayersInitialState());
   };
 
+  const handleStatusDurationForPlayer = (stepIndex: number) => {
+    const player = players[stepIndex];
+    if (!player) return;
+    const updatedStatuses = (player.statuses ?? []).map((s) => {
+      const newDuration = Math.max(0, s.duration - 1);
+      if (s.duration === 1) {
+        addToast(`${player.name} has no more ${s.name}`);
+      }
+      return { ...s, duration: newDuration };
+    });
+    const updatedPlayer = { ...player, statuses: updatedStatuses };
+    Dao.writePlayer(updatedPlayer);
+    setPlayers(
+      ViewModel.sortPlayers([
+        ...players.filter((p) => p.id !== player.id),
+        updatedPlayer,
+      ])
+    );
+  };
+
   return (
     <div className="container">
       <Sidebar
@@ -154,7 +181,7 @@ function App() {
           applyManualRoll={applyManualRoll}
           refreshPlayers={refreshPlayers}
           players={players}
-          handleStatusDuration={handleStatusDuration}
+          handleStatusDurationForPlayer={handleStatusDurationForPlayer}
         />
       ) : (
         <></>
@@ -176,6 +203,11 @@ function App() {
         <></>
       )}
 
+      <div className="toast-container">
+        {toasts.map((t) => (
+          <div key={t.id} className="toast">{t.message}</div>
+        ))}
+      </div>
       <Settings visible={settingsVisible} setVisible={setSettingsVisible} />
       <ChooseMonsters
         visible={chooseMonstersVisible}

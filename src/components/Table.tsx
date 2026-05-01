@@ -80,7 +80,7 @@ function Table(props: any) {
         game={props?.game}
         setGame={props?.setGame}
         addHistoryRecord={props?.addHistoryRecord}
-        handleStatusDuration={props?.handleStatusDuration}
+        handleStatusDurationForPlayer={props?.handleStatusDurationForPlayer}
       />
     </>
   );
@@ -258,7 +258,7 @@ function Member(props: any) {
                   type="text"
                   placeholder="status"
                   value={s.name}
-                  className={s.name !== "" ? "poison" : ""}
+                  className={s.name !== "" ? (s.duration === 0 ? "status-expired" : "poison") : ""}
                   onChange={(e) =>
                     updateStatuses(
                       (player?.statuses ?? []).map((st, j) =>
