@@ -382,34 +382,88 @@ function Member(props: any) {
 
 function OtherStats(props: any) {
   const isOpen = props?.isOpen ?? false;
-  const player = props?.player;
-  return isOpen ? (
-    <div className={props?.customCLass + " other-stats"}>
-      <div className="input-container" style={{ maxWidth: "10rem" }}>
-        <p className="stat-label">Strength</p>
-        <input type={"number"} value={player?.strength} readOnly></input>
-      </div>
-      <div className="input-container">
-        <p className="stat-label">Dexterity</p>
+  const player: Player = props?.player;
+  const mp = player?.monsterProperties;
 
-        <input type={"number"} value={player?.dexterity} readOnly></input>
+  const leftFields = [
+    { label: "AC", value: mp?.AC, type: "number" },
+    { label: "Challenge Rating", value: mp?.challenge_rating, type: "number" },
+    { label: "Prof. Bonus", value: mp?.proficiency_bonus, type: "number" },
+    { label: "EXP", value: mp?.exp, type: "number" },
+    { label: "Creature Type", value: mp?.type, type: "text" },
+    { label: "Alignment", value: mp?.alignment, type: "text" },
+    { label: "Saving Throws", value: mp?.savingThrows, type: "text" },
+  ].filter((f) => !!f.value);
+
+  const rightFields = [
+    { label: "Senses", value: mp?.senses },
+    { label: "Traits", value: mp?.traits },
+    { label: "Actions", value: mp?.actions },
+    { label: "Bonus Actions", value: mp?.bonus_actions },
+    { label: "Reactions", value: mp?.reactions },
+    { label: "Legendary Actions", value: mp?.legendary_actions },
+    { label: "Abilities", value: mp?.abilities },
+    { label: "Resistances", value: mp?.resistances },
+    { label: "Dmg. Immunities", value: mp?.damage_immunities },
+    { label: "Cond. Immunities", value: mp?.condition_immunities },
+  ].filter((f) => !!f.value) as { label: string; value: string }[];
+
+  const hasMonsterProps =
+    player?.type === "monster" &&
+    (leftFields.length > 0 || rightFields.length > 0);
+
+  return isOpen ? (
+    <div className={props?.customCLass}>
+      <div className="other-stats">
+        <div className="input-container" style={{ maxWidth: "10rem" }}>
+          <p className="stat-label">Strength</p>
+          <input type={"number"} value={player?.strength} readOnly></input>
+        </div>
+        <div className="input-container">
+          <p className="stat-label">Dexterity</p>
+          <input type={"number"} value={player?.dexterity} readOnly></input>
+        </div>
+        <div className="input-container">
+          <p className="stat-label">Constitution</p>
+          <input type={"number"} value={player?.constitution} readOnly></input>
+        </div>
+        <div className="input-container">
+          <p className="stat-label">Intelligence</p>
+          <input type={"number"} value={player?.intelligence} readOnly></input>
+        </div>
+        <div className="input-container">
+          <p className="stat-label">Charisma</p>
+          <input type={"number"} value={player?.charisma} readOnly></input>
+        </div>
+        <div className="input-container">
+          <p className="stat-label">Wisdom</p>
+          <input type={"number"} value={player?.wisdom} readOnly></input>
+        </div>
       </div>
-      <div className="input-container">
-        <p className="stat-label">Constitution</p>
-        <input type={"number"} value={player?.constitution} readOnly></input>
-      </div>
-      <div className="input-container">
-        <p className="stat-label">Intelligence</p>
-        <input type={"number"} value={player?.intelligence} readOnly></input>
-      </div>
-      <div className="input-container">
-        <p className="stat-label">Charisma</p>
-        <input type={"number"} value={player?.charisma} readOnly></input>
-      </div>
-      <div className="input-container">
-        <p className="stat-label">Wisdom</p>
-        <input type={"number"} value={player?.wisdom} readOnly></input>
-      </div>
+      {hasMonsterProps && (
+        <div className="other-stats-monster-props">
+          {leftFields.length > 0 && (
+            <div className="other-stats-left">
+              {leftFields.map((f) => (
+                <div key={f.label} className="input-container">
+                  <p className="stat-label">{f.label}</p>
+                  <input type={f.type as "number" | "text"} value={f.value} readOnly />
+                </div>
+              ))}
+            </div>
+          )}
+          {rightFields.length > 0 && (
+            <div className="other-stats-right">
+              {rightFields.map((f) => (
+                <div key={f.label} className="mp-textarea-container">
+                  <p className="stat-label">{f.label}</p>
+                  <textarea value={f.value} readOnly />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   ) : (
     <></>

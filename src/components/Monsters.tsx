@@ -4,7 +4,7 @@ import "./Monsters.css";
 import trash from "../assets/trash3.png";
 import CustomIcon from "./layout/CustomIcon";
 import ModalDelete from "./dialogs/ModalDelete";
-import { Player } from "../types/GameTypes";
+import { MonsterProperties, Player } from "../types/GameTypes";
 import { Dao } from "../data/write";
 import MonsterHeader from "./MonsterHeader";
 import { ViewModel } from "../ViewModel";
@@ -28,7 +28,7 @@ export default function Monsters(props: any) {
   };
   const handleDelete = (id: number) => {
     setPlayers(ViewModel.sortMonsters([...players.filter((p) => p.id !== id)]));
-    props?.refreshMonstersCategories(); // refresh lista tipi in game quando premo add monsters
+    props?.refreshMonstersCategories();
   };
   const filterPlayers = (searched: string) => {
     const filtered = Dao.getPlayers("monster")?.filter(
@@ -62,7 +62,7 @@ export default function Monsters(props: any) {
                 <></>
               )}
 
-              {players?.map((player, index) => (
+              {players?.map((player) => (
                 <Member
                   key={player?.id + "_" + player?.category}
                   player={player}
@@ -74,6 +74,189 @@ export default function Monsters(props: any) {
         </div>
       </div>
     </>
+  );
+}
+
+function MonsterPropsLeft({
+  monsterProps,
+  handleMonsterProp,
+  onBlur,
+}: {
+  monsterProps: Partial<MonsterProperties>;
+  handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
+  onBlur?: () => void;
+}) {
+  return (
+    <div className="monster-props-left">
+      <div className="input-container">
+        <p className="stat-label">AC</p>
+        <input
+          type="number"
+          value={monsterProps.AC ?? ""}
+          onChange={(e) => handleMonsterProp("AC", Number(e.target.value))}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Challenge Rating</p>
+        <input
+          type="number"
+          value={monsterProps.challenge_rating ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("challenge_rating", Number(e.target.value))
+          }
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Prof. Bonus</p>
+        <input
+          type="number"
+          value={monsterProps.proficiency_bonus ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("proficiency_bonus", Number(e.target.value))
+          }
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">EXP</p>
+        <input
+          type="number"
+          value={monsterProps.exp ?? ""}
+          onChange={(e) => handleMonsterProp("exp", Number(e.target.value))}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Creature Type</p>
+        <input
+          type="text"
+          value={monsterProps.type ?? ""}
+          onChange={(e) => handleMonsterProp("type", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Alignment</p>
+        <input
+          type="text"
+          value={monsterProps.alignment ?? ""}
+          onChange={(e) => handleMonsterProp("alignment", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Saving Throws</p>
+        <input
+          type="text"
+          value={monsterProps.savingThrows ?? ""}
+          onChange={(e) => handleMonsterProp("savingThrows", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+    </div>
+  );
+}
+
+function MonsterPropsRight({
+  monsterProps,
+  handleMonsterProp,
+  onBlur,
+}: {
+  monsterProps: Partial<MonsterProperties>;
+  handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
+  onBlur?: () => void;
+}) {
+  return (
+    <div className="monster-props-right">
+      <div className="input-container-wide">
+        <p className="stat-label">Senses</p>
+        <textarea
+          value={monsterProps.senses ?? ""}
+          onChange={(e) => handleMonsterProp("senses", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Traits</p>
+        <textarea
+          value={monsterProps.traits ?? ""}
+          onChange={(e) => handleMonsterProp("traits", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Actions</p>
+        <textarea
+          value={monsterProps.actions ?? ""}
+          onChange={(e) => handleMonsterProp("actions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Bonus Actions</p>
+        <textarea
+          value={monsterProps.bonus_actions ?? ""}
+          onChange={(e) => handleMonsterProp("bonus_actions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Reactions</p>
+        <textarea
+          value={monsterProps.reactions ?? ""}
+          onChange={(e) => handleMonsterProp("reactions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Legendary Actions</p>
+        <textarea
+          value={monsterProps.legendary_actions ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("legendary_actions", e.target.value)
+          }
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Abilities</p>
+        <textarea
+          value={monsterProps.abilities ?? ""}
+          onChange={(e) => handleMonsterProp("abilities", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Resistances</p>
+        <textarea
+          value={monsterProps.resistances ?? ""}
+          onChange={(e) => handleMonsterProp("resistances", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Dmg. Immunities</p>
+        <textarea
+          value={monsterProps.damage_immunities ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("damage_immunities", e.target.value)
+          }
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Cond. Immunities</p>
+        <textarea
+          value={monsterProps.condition_immunities ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("condition_immunities", e.target.value)
+          }
+          onBlur={onBlur}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -89,7 +272,10 @@ function Member(props: any) {
   const [intelligence, setIntelligence] = useState(player?.intelligence);
   const [charisma, setCharisma] = useState(player?.charisma);
   const [wisdom, setWisdom] = useState(player?.wisdom);
-
+  const [expanded, setExpanded] = useState(false);
+  const [monsterProps, setMonsterProps] = useState<Partial<MonsterProperties>>(
+    player?.monsterProperties ?? {}
+  );
   const [deleteVisible, setDeleteVisible] = useState(false);
 
   const handleStats = () => {
@@ -110,7 +296,12 @@ function Member(props: any) {
       isPlaying: player?.isPlaying,
       statuses: player?.statuses ?? [],
       sortIndex: player?.sortIndex,
+      monsterProperties: monsterProps,
     });
+  };
+
+  const handleMonsterProp = (key: keyof MonsterProperties, value: any) => {
+    setMonsterProps((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -127,7 +318,6 @@ function Member(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">HP</p>
-
           <input
             type={"number"}
             value={hp}
@@ -137,7 +327,6 @@ function Member(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Max HP</p>
-
           <input
             type={"number"}
             value={maxHp}
@@ -147,7 +336,6 @@ function Member(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Initiative</p>
-
           <input
             type={"number"}
             value={init}
@@ -166,7 +354,6 @@ function Member(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Dexterity</p>
-
           <input
             type={"number"}
             value={dexterity}
@@ -216,6 +403,19 @@ function Member(props: any) {
               marginTop: "0.5rem",
               background: "transparent",
               border: "none",
+              cursor: "pointer",
+              fontSize: "1rem",
+            }}
+            onClick={() => setExpanded((e) => !e)}
+            title={expanded ? "Collapse" : "Expand"}
+          >
+            {expanded ? "▲" : "▼"}
+          </button>
+          <button
+            style={{
+              marginTop: "0.5rem",
+              background: "transparent",
+              border: "none",
             }}
             className="damage-button"
             onClick={() => setDeleteVisible(true)}
@@ -239,12 +439,30 @@ function Member(props: any) {
           )}
         </div>
       </div>
+      {expanded && (
+        <div className="monster-properties">
+          <MonsterPropsLeft
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+            onBlur={handleStats}
+          />
+          <MonsterPropsRight
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+            onBlur={handleStats}
+          />
+        </div>
+      )}
     </div>
   );
 }
 
 function AddMember(props: any) {
   const [category, setCategory] = useState({} as MonsterCategory);
+  const [addExpanded, setAddExpanded] = useState(false);
+  const [monsterProps, setMonsterProps] = useState<Partial<MonsterProperties>>(
+    {}
+  );
 
   const handleAddClick = async () => {
     const newCategory = Dao.addPlayer({
@@ -254,10 +472,12 @@ function AddMember(props: any) {
       statuses: [],
       type: "monster",
       sortIndex: -1,
+      monsterProperties:
+        Object.keys(monsterProps).length > 0 ? monsterProps : undefined,
     });
     props?.refreshPlayers(newCategory);
-    props?.setShowAddNew(false); //non mostro l'add
-    props?.refreshMonstersCategories(); // refresh lista tipi in game quando premo add monsters
+    props?.setShowAddNew(false);
+    props?.refreshMonstersCategories();
   };
 
   function isButtonAddDisabled(): boolean {
@@ -294,6 +514,10 @@ function AddMember(props: any) {
     setCategory(categoryToUpdate);
   };
 
+  const handleMonsterProp = (key: keyof MonsterProperties, value: any) => {
+    setMonsterProps((prev) => ({ ...prev, [key]: value }));
+  };
+
   const selectedClassName = "member";
 
   return (
@@ -301,7 +525,6 @@ function AddMember(props: any) {
       <div className={selectedClassName}>
         <div className="input-container">
           <p className="stat-label">Type</p>
-
           <input
             className="input-name"
             type={"text"}
@@ -313,7 +536,6 @@ function AddMember(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">HP</p>
-
           <input
             type={"number"}
             value={category?.currentHp}
@@ -324,7 +546,6 @@ function AddMember(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Max HP</p>
-
           <input
             type={"number"}
             value={category?.hp}
@@ -333,7 +554,6 @@ function AddMember(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Init. Mod</p>
-
           <input
             type={"number"}
             value={category?.initiative}
@@ -354,7 +574,6 @@ function AddMember(props: any) {
         </div>
         <div className="input-container">
           <p className="stat-label">Dexterity</p>
-
           <input
             type={"number"}
             value={category?.dexterity}
@@ -405,6 +624,19 @@ function AddMember(props: any) {
         </div>
         <div className="button-trash-container">
           <button
+            style={{
+              marginTop: "0.5rem",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "1rem",
+            }}
+            onClick={() => setAddExpanded((e) => !e)}
+            title={addExpanded ? "Collapse" : "Expand"}
+          >
+            {addExpanded ? "▲" : "▼"}
+          </button>
+          <button
             className="add-button add-button-monsters"
             disabled={isButtonAddDisabled()}
             onClick={handleAddClick}
@@ -413,6 +645,18 @@ function AddMember(props: any) {
           </button>
         </div>
       </div>
+      {addExpanded && (
+        <div className="monster-properties">
+          <MonsterPropsLeft
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+          />
+          <MonsterPropsRight
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+          />
+        </div>
+      )}
     </div>
   );
 }

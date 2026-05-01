@@ -119,6 +119,7 @@ function App() {
       strength: playerToChange?.strength,
       type: playerToChange?.type,
       wisdom: playerToChange?.wisdom,
+      monsterProperties: playerToChange?.monsterProperties,
     };
 
     setPlayers(

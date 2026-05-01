@@ -142,14 +142,59 @@
 .other-stats {
   display: flex;
   gap: 1rem;
-  margin-bottom: 0.6rem;
+  padding: 0.5rem 1rem 0.25rem;
 }
 
 .other-stats .input-container {
   max-width: 6rem;
 }
 
-.other-stats .input-container label {
+.other-stats-monster-props {
+  display: flex;
+  border-top: 1px solid #eee;
+  margin: 0 1rem 0.6rem;
+}
+
+.other-stats-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 13rem;
+  padding: 0.75rem 1.5rem 0.75rem 0;
+}
+
+.other-stats-left .input-container {
+  max-width: none;
+}
+
+.other-stats-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  flex: 1;
+  align-content: flex-start;
+  border-left: 2px solid #e8e8e8;
+}
+
+.mp-textarea-container {
+  min-width: 12rem;
+  flex: 1;
+}
+
+.other-stats-right textarea {
+  margin: 0 1rem;
+  width: calc(100% - 2rem);
+  min-height: 4rem;
+  border: 1px solid #ddd;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  background-color: white;
+  color: #333;
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+  box-sizing: border-box;
 }
 
 .stat-label {

@@ -44,6 +44,7 @@ export class Dao {
         charisma: selectedCategory.charisma,
         isPlaying: true,
         statuses: [],
+        monsterProperties: selectedCategory.monsterProperties,
       };
       this.addPlayer(stamp);
       i += 1;
