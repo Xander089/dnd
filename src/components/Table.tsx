@@ -141,7 +141,7 @@ function Member(props: any) {
     );
 
     setFlash(sign > 0 ? "cure" : "damage");
-    setTimeout(() => setFlash(null), 1000);
+    setTimeout(() => setFlash(null), 2000);
   }
 
   function removePlayer() {

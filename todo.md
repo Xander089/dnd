@@ -5,7 +5,7 @@
 - ! correggere avanazamento turni (no tasto back)
 - ! nella funzione handleIncrement del file src/components/Hud.tsx vorrei risolvere un problema: a riga 19 viene cambiato lo status duration. vorrei invocarlo solo se anche il game (il cui increment method è qui src/types/Game.ts) passa al turno successivo
 - ! In /src/components/Table.tsx c'è la chiamata alla modale DamageCure: alla sua chiusura mi piacerebbe applicare una transizione css al componenete Member selezionato (ha una property isSelected). In caso di cura, la transizione dovrebbe applicare un colore verde al di sopra di tutto il resto del componente, la transizione dura 1 secondo, al termine del quale questo strato colorato torna ad essere trasparente. In caso di Damage stessa cosa, solo il colore passa da rosso a trasparente.
-- nella cartella src, se da terminale fai una ricerca del termine "statusDuration" compare in alcuni file .ts e .tsx. è inizialmente definito nel file src/types/GameTypes.ts come number. La proprietà immediatamente precedente è "status" che è una stringa. Vorrei rendere queste due proprietà un array di (status, statusDuration) in modo che nel game, monsters o membri del party possano contemporaneamente avere più di uno status. Mi aiuti a implementarlo, modificando il file GameTypes.ts e tutti gli altri file ts e tsx che hanno queste due proprietà?
+- ! nella cartella src, se da terminale fai una ricerca del termine "statusDuration" compare in alcuni file .ts e .tsx. è inizialmente definito nel file src/types/GameTypes.ts come number. La proprietà immediatamente precedente è "status" che è una stringa. Vorrei rendere queste due proprietà un array di (status, statusDuration) in modo che nel game, monsters o membri del party possano contemporaneamente avere più di uno status. Mi aiuti a implementarlo, modificando il file GameTypes.ts e tutti gli altri file ts e tsx che hanno queste due proprietà?
 - per i mostri, iniziativa diventa Modificatore iniziativa. Nella finestra di aggiunta mostri in game, inserire campo "iniziativa" number. Se lo lascio a zero, l'iniziativa in game è mod + rand(1..20). Se invece inserisco un numero, allora iniziativa in game = quel numero + modificatore.
 - sezione Mostri: aggiungere una sezione espandibile con dei nuovi campi: vedi foglio. 
     - cose fisse: CA (numero), tratti speciali (stringa), azioni (stringa), tipo di mostro e allineamento (stringhe)
@@ -14,7 +14,6 @@
 - ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
 - nella history, orario in cui viene eseguita l'azione (ogni step) + data iniziale game + segnare la data se si supera la mezzanotte, o se si riprende un game in un giorno diverso da quello iniziato
 - nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
-- style: pergamena
 - nel menu a sinistra inserire grimorio degli incantesimi: 
     - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
     - nella sezione mostri ho il flag "incantesimi".
