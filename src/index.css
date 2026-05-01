@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,12 +15,8 @@
 
   --red: #213547;
   --maroon: #444;
-  /* --red: #dc0000;
-  --maroon: #850000;  */
   --yellow: #eee;
   --yellow-light: #fff;
-  /* --yellow: #ffdb89;
-  --yellow-light: #fff6c3; */
   --violet: #c026d3;
   --life: #ef4444;
   --orange: #fdba74;
@@ -72,17 +68,6 @@ button:focus-visible {
   outline: 4px auto #213547;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-  }
-}
 
 /* input, */
 textarea {

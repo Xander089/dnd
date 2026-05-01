@@ -28,6 +28,8 @@ input {
   border: 1px solid #ddd;
   padding: 0 0.5em;
   border-radius: 4px;
+  background-color: white;
+  color: black;
 }
 
 h3 {
