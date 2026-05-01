@@ -1,7 +1,7 @@
 import "../../App.css";
 import "./ModalChooseMonsters.css";
 import Dialog from "../layout/dialog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dao } from "../../data/write";
 import { MonsterSelection } from "../../types/GameTypes";
 
@@ -9,13 +9,20 @@ function ChooseMonsters(props: any) {
   const visible: boolean = props?.visible ?? false;
   const setVisible: (visible: boolean) => void = props?.setVisible;
   const [searched, setSearched] = useState("");
+
+  useEffect(() => {
+    if (visible) setSearched("");
+  }, [visible]);
+
   function handleVisible() {
+    props?.resetCategories();
     setVisible(!visible);
   }
 
   function handleOk() {
     props?.addMonstersToGame();
-    props?.refreshGame(); //refresh dell'hud
+    props?.refreshGame();
+    props?.resetCategories();
     setVisible(!visible);
   }
 

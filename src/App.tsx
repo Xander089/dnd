@@ -187,6 +187,7 @@ function App() {
         handleQuantity={handleQuantity}
         addMonstersToGame={addMonstersToGame}
         refreshGame={refreshGame}
+        resetCategories={refreshMonstersCategories}
       />
     </div>
   );
