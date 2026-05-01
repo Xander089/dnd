@@ -11,12 +11,15 @@ function Hud(props: any) {
   const className = "hud ";
   const [editGameVisible, setEditGameVisible] = useState(false);
   const handleIncrement = () => {
+    const previousTurn = props?.game?.turn;
     const game = increment(props?.game);
     Dao.writeGame(game);
     props?.setGame(Dao.getGame());
 
     props?.addHistoryRecord("Il Master passa al turno successivo");
-    props?.handleStatusDuration(1);
+    if (game.turn > previousTurn) {
+      props?.handleStatusDuration(1);
+    }
   };
 
   const handleDecrement = () => {
