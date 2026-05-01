@@ -91,7 +91,8 @@ function Member(props: any) {
   const [accordionOpen, setAccordionOpen] = useState(false);
   const [damageVisible, setDamageVisible] = useState(false);
   const [cureVisible, setCureVisible] = useState(false);
-  const [removeVisible, setRemoveVisible] = useState(false); //modale remove player
+  const [removeVisible, setRemoveVisible] = useState(false);
+  const [flash, setFlash] = useState<"cure" | "damage" | null>(null);
 
   function getCurrentPlayer(updatedHp: number | undefined = undefined): Player {
     return {
@@ -131,14 +132,17 @@ function Member(props: any) {
   function applyCureDamage(amount: number, sign: number) {
     const newHp =
       parseInt(player?.currentHp + "") + parseInt(amount * sign + "");
-    props?.refreshPlayers("currentHp", newHp, player?.id); //cambia lo stato
-    handleStats(newHp); //scrive in local storage
-    props?.applyCureDamageToPlayers(getCurrentPlayer(newHp)); //refresh dei players
+    props?.refreshPlayers("currentHp", newHp, player?.id);
+    handleStats(newHp);
+    props?.applyCureDamageToPlayers(getCurrentPlayer(newHp));
 
     const heal = sign > 0 ? " applica una cura" : " applica una ferita";
     props?.addHistoryRecord(
       "Il master" + heal + " a " + player?.name + " di " + amount + " punti"
     );
+
+    setFlash(sign > 0 ? "cure" : "damage");
+    setTimeout(() => setFlash(null), 1000);
   }
 
   function removePlayer() {
@@ -167,6 +171,7 @@ function Member(props: any) {
 
   return (
     <div className={"member-border" + selectedClassName + colorClassName}>
+      {flash && <div className={`flash-overlay flash-${flash}`} />}
       {/* <CustomIcon
         size="24px"
         iconClass="game-icon"

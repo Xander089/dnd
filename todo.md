@@ -3,8 +3,8 @@
 - ! Quando chiudo la modale relativa a src/components/dialogs/ModalDamageCure.tsx, e successivamente la riapro, ci sono ancora i valori precedentemente inseriti dall'utente. Sarebbe bello che i campi della modale partissero tutti vuoti (come se le variabili fossero null). All'OK o cancel, gli stessi valori vengono comunque salvati con il valore 0 se l'utente non ha inserito nulla nell'input html. 
 - ! la finestra di selezione mostri non si resetta (bug)
 - ! correggere avanazamento turni (no tasto back)
--! nella funzione handleIncrement del file src/components/Hud.tsx vorrei risolvere un problema: a riga 19 viene cambiato lo status duration. vorrei invocarlo solo se anche il game (il cui increment method è qui src/types/Game.ts) passa al turno successivo
-
+- ! nella funzione handleIncrement del file src/components/Hud.tsx vorrei risolvere un problema: a riga 19 viene cambiato lo status duration. vorrei invocarlo solo se anche il game (il cui increment method è qui src/types/Game.ts) passa al turno successivo
+-! In /src/components/Table.tsx c'è la chiamata alla modale DamageCure: alla sua chiusura mi piacerebbe applicare una transizione css al componenete Member selezionato (ha una property isSelected). In caso di cura, la transizione dovrebbe applicare un colore verde al di sopra di tutto il resto del componente, la transizione dura 1 secondo, al termine del quale questo strato colorato torna ad essere trasparente. In caso di Damage stessa cosa, solo il colore passa da rosso a trasparente.
 - nella sezione "Game", sulla singola riga, sia esso un membro del party o un monster, devo poter avere la possibilità di aggiungere più di uno status. Attualmente c'è un singolo status per giocatore
 - per i mostri, iniziativa diventa Modificatore iniziativa. Nella finestra di aggiunta mostri in game, inserire campo "iniziativa" number. Se lo lascio a zero, l'iniziativa in game è mod + rand(1..20). Se invece inserisco un numero, allora iniziativa in game = quel numero + modificatore.
 - sezione Mostri: aggiungere una sezione espandibile con dei nuovi campi: vedi foglio. 
@@ -12,7 +12,6 @@
     - cose variabili: tiri salvezza (), abilità, resistenza di danni, immunità danni, immunità condizioni, sensi, grado sfida, bonus competenza, punti esperienza (numero), azioni bonus, azioni leggendarie, reazioni + incantesimi: per loro simbolo "@" selezione multi selection. se digito un incantesimo ne compare un'altra @. In game ho un mostro che ha N incantesimi selezionati alla creazione, se clicco sopra uno, vedo il dettaglio dell'incantesimo
 
 - ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
-- colorazione rossa o verde a fine cura o danno rispettivamente
 - nella history, orario in cui viene eseguita l'azione (ogni step) + data iniziale game + segnare la data se si supera la mezzanotte, o se si riprende un game in un giorno diverso da quello iniziato
 - nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
 - style: pergamena
