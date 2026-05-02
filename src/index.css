@@ -82,7 +82,7 @@ body {
   overflow: hidden;
   background:
     var(--parchment-noise),
-    var(--parchment-texture),
+    /* var(--parchment-texture),  */
     radial-gradient(ellipse at center, var(--parch-light), var(--parch) 60%, var(--parch-mid) 100%);
   background-attachment: fixed;
   background-size: 240px 240px, auto, auto;

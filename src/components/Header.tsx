@@ -54,8 +54,24 @@ function Header(props: any) {
           <button
             className="header-button-tooltip"
             onClick={() => props?.setExpand(!props?.expand)}
+            title={props?.expand ? "Close side panel" : "Open side panel"}
           >
-            Side
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {props?.expand ? (
+                <polyline points="15 18 9 12 15 6" />
+              ) : (
+                <polyline points="9 18 15 12 9 6" />
+              )}
+            </svg>
           </button>
         </div>
       </div>
