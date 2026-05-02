@@ -404,6 +404,7 @@ function Member(props: any) {
               border: "none",
               cursor: "pointer",
               fontSize: "1rem",
+              color: "#543213"
             }}
             onClick={() => setExpanded((e) => !e)}
             title={expanded ? "Collapse" : "Expand"}
@@ -628,6 +629,7 @@ function AddMember(props: any) {
               border: "none",
               cursor: "pointer",
               fontSize: "1rem",
+              color: "#543213"
             }}
             onClick={() => setAddExpanded((e) => !e)}
             title={addExpanded ? "Collapse" : "Expand"}

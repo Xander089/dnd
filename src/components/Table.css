@@ -78,12 +78,13 @@
 .member .input-name { max-width: 9rem; flex: 1 1 11rem; min-width: 9rem; }
 .member-header .input-container { min-width: 4rem; }
 .input-container h3 { border-radius: 2px; }
-.member .damage-button { margin-left: 1.5rem; }
+.member .damage-button { margin-left: 1.5rem; color: #543213; }
 .member-button {
   margin-top: 1.2rem;
   background: transparent !important;
   border-color: transparent !important;
   box-shadow: none;
+  color: #543213;
 }
 .member-button:hover {
   background: rgba(184,149,74,0.18) !important;
