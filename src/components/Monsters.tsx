@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Monsters.css";
 import Icon from "./Icon";
 import ModalDelete from "./dialogs/ModalDelete";
-import { MonsterProperties, Player } from "../types/GameTypes";
+import { MonsterProperties, Player, Spell } from "../types/GameTypes";
 import { Dao } from "../data/write";
 import MonsterHeader from "./MonsterHeader";
 import { ViewModel } from "../ViewModel";
@@ -138,10 +138,12 @@ function MonsterPropsOptional({
   monsterProps,
   handleMonsterProp,
   onBlur,
+  onSpellsChange,
 }: {
   monsterProps: Partial<MonsterProperties>;
   handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
   onBlur?: () => void;
+  onSpellsChange?: (ids: number[]) => void;
 }) {
   return (
     <div className="monster-props-optional">
@@ -263,6 +265,76 @@ function MonsterPropsOptional({
           onBlur={onBlur}
         />
       </div>
+      <SpellMultiSelect
+        selectedIds={monsterProps.spells ?? []}
+        onChange={onSpellsChange ?? ((ids) => handleMonsterProp("spells", ids))}
+      />
+    </div>
+  );
+}
+
+function SpellMultiSelect({
+  selectedIds,
+  onChange,
+}: {
+  selectedIds: number[];
+  onChange: (ids: number[]) => void;
+}) {
+  const [query, setQuery] = useState("");
+  const allSpells: (Spell & { id: number })[] = Dao.getSpells();
+
+  const filtered = query
+    ? allSpells.filter(
+        (s) =>
+          s.name.toLowerCase().includes(query.toLowerCase()) &&
+          !selectedIds.includes(s.id)
+      )
+    : [];
+
+  return (
+    <div className="spell-multiselect">
+      <p className="stat-label">Spells</p>
+      {selectedIds.length > 0 && (
+        <div className="spell-chips-edit">
+          {selectedIds.map((id) => {
+            const spell = allSpells.find((s) => s.id === id);
+            return spell ? (
+              <span key={id} className="spell-chip-edit">
+                {spell.name}
+                <button
+                  onClick={() => onChange(selectedIds.filter((i) => i !== id))}
+                >×</button>
+              </span>
+            ) : null;
+          })}
+        </div>
+      )}
+      <div className="spell-search-wrapper">
+        <input
+          type="text"
+          style={{margin : "0"}}
+          placeholder="Search spell…"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        {filtered.length > 0 && (
+          <div className="spell-dropdown">
+            {filtered.map((s) => (
+              <div
+                key={s.id}
+                className="spell-dropdown-item"
+                onMouseDown={() => {
+                  onChange([...selectedIds, s.id]);
+                  setQuery("");
+                }}
+              >
+                {s.name}
+                <span className="spell-dropdown-level">Lv.{s.level}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -309,6 +381,30 @@ function Member(props: any) {
 
   const handleMonsterProp = (key: keyof MonsterProperties, value: any) => {
     setMonsterProps((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleSpellsChange = (ids: number[]) => {
+    const updated = { ...monsterProps, spells: ids };
+    setMonsterProps(updated);
+    Dao.writePlayer({
+      id: player?.id,
+      name: "",
+      category: category,
+      type: "monster",
+      hp: maxHp,
+      currentHp: hp,
+      initiative: init,
+      strength: strength,
+      dexterity: dexterity,
+      constitution: constitution,
+      intelligence: intelligence,
+      wisdom: wisdom,
+      charisma: charisma,
+      isPlaying: player?.isPlaying,
+      statuses: player?.statuses ?? [],
+      sortIndex: player?.sortIndex,
+      monsterProperties: updated,
+    });
   };
 
   return (
@@ -458,6 +554,7 @@ function Member(props: any) {
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
             onBlur={handleStats}
+            onSpellsChange={handleSpellsChange}
           />
         </div>
       )}

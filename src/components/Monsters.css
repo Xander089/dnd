@@ -282,3 +282,87 @@
 }
 .member-border.monster-bg::after,
 .monster-card::after { content: none; }
+
+/* ---- Spell multi-select (Monsters edit form) ---- */
+.spell-multiselect {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.spell-chips-edit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.spell-chip-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(138,107,63,0.15);
+  border: 1px solid rgba(138,107,63,0.35);
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.spell-chip-edit button {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 0.1rem;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.spell-chip-edit button:hover {
+  color: var(--red);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.spell-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.spell-search-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spell-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #f6e8c6;
+  border: 1px solid rgba(138,107,63,0.4);
+  border-top: none;
+  z-index: 50;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.spell-dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.spell-dropdown-item:hover { background: rgba(138,107,63,0.15); }
+
+.spell-dropdown-level {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}

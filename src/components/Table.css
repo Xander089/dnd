@@ -323,3 +323,74 @@
   from { opacity: 1; }
   to   { opacity: 0; }
 }
+
+/* ---- Spells row in OtherStats ---- */
+.other-stats-spells {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem 0.75rem;
+  border-top: 1px solid rgba(138,107,63,0.25);
+}
+
+.other-stats-spells .stat-label {
+  margin: 0;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+.spell-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.spell-chip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.spell-chip-label {
+  display: inline-block;
+  background: rgba(138,107,63,0.15);
+  border: 1px solid rgba(138,107,63,0.35);
+  border-radius: 2px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: default;
+  color: var(--ink);
+}
+
+.spell-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0%;
+  transform: translateX(-0%);
+  min-width: 14rem;
+  max-width: 22rem;
+  background: #fdf3d4;
+  border: 1px solid rgba(138,107,63,0.5);
+  border-radius: 2px;
+  padding: 0.5rem 0.75rem;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(60,40,15,0.25);
+  pointer-events: none;
+}
+
+.spell-tooltip p {
+  margin: 0.15rem 0;
+  font-size: 0.8rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.spell-tooltip-name {
+  font-weight: bold;
+  font-size: 0.9rem !important;
+  margin-bottom: 0.35rem !important;
+  border-bottom: 1px solid rgba(138,107,63,0.3);
+  padding-bottom: 0.25rem;
+}
+
+.spell-chip-wrapper:hover .spell-tooltip { display: block; }

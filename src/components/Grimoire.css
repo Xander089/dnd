@@ -58,7 +58,7 @@
   border-bottom-color: rgba(212,176,86,0.35) !important;
 }
 .grimoire-header h4 {
-  color: var(--tome-gold) !important;
+  color: var(--ink) !important;
   text-shadow: 0 0 12px rgba(212,176,86,0.35);
 }
 

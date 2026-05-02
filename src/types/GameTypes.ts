@@ -66,4 +66,5 @@ export type MonsterProperties = {
   legendary_actions: string, // text area
   reactions: string, // text area
   vulnerability: string //text area
+  spells: number[] // IDs from grimoire
 }

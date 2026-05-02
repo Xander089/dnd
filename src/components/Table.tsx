@@ -3,7 +3,7 @@ import "./Table.css";
 import warrior from "../assets/warrior.png";
 import orc from "../assets/orc.png";
 import Icon from "./Icon";
-import { Player, PlayerStatus } from "../types/GameTypes";
+import { Player, PlayerStatus, Spell } from "../types/GameTypes";
 import DamageCure from "./dialogs/ModalDamageCure";
 import { Dao } from "../data/write";
 import Note from "./Note";
@@ -421,6 +421,10 @@ function OtherStats(props: any) {
     player?.type === "monster" &&
     (leftFields.length > 0 || rightFields.length > 0);
 
+  const selectedSpellIds: number[] = mp?.spells ?? [];
+  const allSpells: (Spell & { id: number })[] = selectedSpellIds.length > 0 ? Dao.getSpells() : [];
+  const selectedSpells = allSpells.filter((s) => selectedSpellIds.includes(s.id));
+
   return isOpen ? (
     <div className={props?.customCLass}>
       <div className="other-stats">
@@ -471,6 +475,27 @@ function OtherStats(props: any) {
               ))}
             </div>
           )}
+        </div>
+      )}
+      {selectedSpells.length > 0 && (
+        <div className="other-stats-spells">
+          <p className="stat-label">Spells</p>
+          <div className="spell-chips-row">
+            {selectedSpells.map((spell) => (
+              <div key={spell.id} className="spell-chip-wrapper">
+                <span className="spell-chip-label">{spell.name}</span>
+                <div className="spell-tooltip">
+                  <p className="spell-tooltip-name">{spell.name}</p>
+                  <p><b>School:</b> {spell.school}</p>
+                  <p><b>Level:</b> {spell.level}</p>
+                  <p><b>Casting Time:</b> {spell.castingTime}</p>
+                  <p><b>Range:</b> {spell.range}</p>
+                  <p><b>Duration:</b> {spell.duration}</p>
+                  {spell.effect && <p><b>Effect:</b> {spell.effect}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
