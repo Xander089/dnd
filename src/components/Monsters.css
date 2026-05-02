@@ -148,6 +148,7 @@
 
 .larger-container { max-width: 6rem; }
 .member .input-container { max-width: 5rem; flex: 0 0 auto; }
+.member .button-trash-container { max-width: 5rem; flex: 0 0 auto; }
 .member .input-name { max-width: 11rem; flex: 1 1 11rem; min-width: 9rem; }
 .member .party-name { min-width: 7rem; max-width: 7rem;  margin-left: 2em;}
 .member-header .input-container { min-width: 4rem; }

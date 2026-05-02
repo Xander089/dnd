@@ -88,7 +88,7 @@
 .spell-row {
   align-items: center;
   flex-wrap: nowrap;
-  padding: 0.5rem 0.6rem;
+  padding: 0.7rem 0.6rem;
 }
 .spell-name-container {
   min-width: 8rem;

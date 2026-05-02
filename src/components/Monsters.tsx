@@ -396,7 +396,7 @@ function Member(props: any) {
             onBlur={handleStats}
           ></input>
         </div>
-        <div className="button-trash-container">
+        <div className="button-trash-container" style={{marginLeft: "3rem"}}>
           <button
             style={{
               marginTop: "0.5rem",
@@ -620,7 +620,7 @@ function AddMember(props: any) {
             }
           ></input>
         </div>
-        <div className="button-trash-container">
+        <div className="button-trash-container" style={{marginLeft: "3rem"}}>
           <button
             style={{
               marginTop: "0.5rem",
