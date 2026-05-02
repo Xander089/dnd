@@ -1,0 +1,109 @@
+.tutorial-tab {
+  overflow-y: auto;
+}
+
+.tutorial-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tutorial-intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.tutorial-section {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--parch-mid);
+}
+.tutorial-section:last-child {
+  border-bottom: none;
+}
+
+.tutorial-section h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--wine);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.tutorial-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1rem 0 0.4rem;
+}
+
+.tutorial-section p {
+  margin: 0.4rem 0;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.tutorial-section ul,
+.tutorial-section ol {
+  margin: 0.4rem 0 0.4rem 1.4rem;
+  padding: 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+.tutorial-section li {
+  margin-bottom: 0.2rem;
+}
+
+.tutorial-section code {
+  font-family: monospace;
+  font-size: 0.88rem;
+  background: var(--parch-mid);
+  border-radius: 3px;
+  padding: 0 4px;
+  color: var(--ink);
+}
+
+.tutorial-warning {
+  margin-top: 0.6rem !important;
+  color: var(--wine) !important;
+  font-style: italic;
+}
+
+.tutorial-flow ol {
+  counter-reset: flow-counter;
+  list-style: none;
+  margin-left: 0;
+}
+.tutorial-flow ol li {
+  counter-increment: flow-counter;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed var(--parch-mid);
+}
+.tutorial-flow ol li:last-child {
+  border-bottom: none;
+}
+.tutorial-flow ol li::before {
+  content: counter(flow-counter);
+  min-width: 1.4rem;
+  height: 1.4rem;
+  background: var(--wine);
+  color: var(--parch-light);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}

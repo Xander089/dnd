@@ -36,6 +36,12 @@ function Sidebar(props: any) {
           iconName="grimoire"
           description="Grimoire"
         />
+        <ButtonWithToolTip
+          btnClassName={props?.pageSelected === 4 ? "buttonSelected" : ""}
+          onClick={() => props?.setPageSelected(4)}
+          iconName="scroll"
+          description="Tutorial"
+        />
       </nav>
       <div className="settings tooltip">
         <button style={{ border: "none" }} onClick={handleSettings}>
