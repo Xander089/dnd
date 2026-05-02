@@ -35,7 +35,7 @@ function ChooseMonsters(props: any) {
   };
 
   return visible ? (
-    <Dialog>
+    <Dialog onClose={handleVisible}>
       <div className="modal-title modal-choose-title">
         <h3>Select monsters</h3>
       </div>

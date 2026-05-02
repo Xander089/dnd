@@ -8,7 +8,7 @@ function ModalDelete(props: any) {
   };
 
   return props?.deleteVisible ? (
-    <Dialog>
+    <Dialog onClose={() => props?.setDeleteVisible(false)}>
       <div className="modal-content modal-delete-content">
         <div className="modal-title">
           <h3>Remove {props?.type}</h3>

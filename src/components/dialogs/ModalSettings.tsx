@@ -20,7 +20,7 @@ function ModalSettings(props: any) {
   }
 
   return visible ? (
-    <Dialog>
+    <Dialog onClose={handleVisible}>
       <div className="modal-content modal-settings">
         <div className="modal-title">
           <h3>Settings</h3>

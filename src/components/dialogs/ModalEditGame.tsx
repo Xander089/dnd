@@ -15,7 +15,7 @@ function ModalEditGame(props: any) {
   }
 
   return visible ? (
-    <Dialog>
+    <Dialog onClose={() => setVisible(false)}>
       <div className="modal-effect">
         <div className="modal-title">
           <h3>Edit Game</h3>

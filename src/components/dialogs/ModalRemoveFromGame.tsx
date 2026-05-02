@@ -9,7 +9,7 @@ function ModalRemoveFromGame(props: any) {
   };
 
   return props?.removeVisible ? (
-    <Dialog>
+    <Dialog onClose={() => props?.setRemoveVisible(false)}>
       <div className="modal-content modal-delete-content">
         <div className="modal-title">
           <h3>Remove {props?.type}</h3>

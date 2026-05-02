@@ -30,7 +30,7 @@ function DamageCure(props: any) {
   }
 
   return visible ? (
-    <Dialog customModal="25%">
+    <Dialog customModal="25%" onClose={handleCancel}>
       <div className="modal-content">
         <div className="modal-title">
           <h3>{props?.Label ?? ""}</h3>

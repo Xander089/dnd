@@ -351,6 +351,7 @@ function Member(props: any) {
               border: "none",
               cursor: "pointer",
               fontSize: "1rem",
+              color: "#543213"
             }}
             onClick={handleAccordion}
           >
