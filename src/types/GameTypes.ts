@@ -40,8 +40,10 @@ export type Spell = {
   school: string,
   level: number,
   castingTime: string,
+  castingTimeEnumValue?: string,
   range: string,
   duration: string,
+  durationEnumValue?: string,
   effect: string
 }
 

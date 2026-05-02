@@ -23,17 +23,22 @@
 }
 .grimoire-tab .stat-label { color: rgba(231,214,179,0.65); }
 .grimoire-tab input,
-.grimoire-tab textarea {
+.grimoire-tab textarea,
+.grimoire-tab select {
   background: rgba(20,12,32,0.55);
   color: var(--tome-text);
   border-color: rgba(212,176,86,0.35);
 }
 .grimoire-tab input:focus,
-.grimoire-tab textarea:focus {
+.grimoire-tab textarea:focus,
+.grimoire-tab select:focus {
   border-color: var(--tome-rune);
   box-shadow: 0 0 0 2px rgba(157,107,255,0.25);
   background: linear-gradient(180deg, #3a2658, #221634);
-
+}
+.grimoire-tab select option {
+  background: #18102a;
+  color: var(--tome-text);
 }
 .grimoire-tab button {
   background: linear-gradient(180deg, #2c1d44, #1a1124);

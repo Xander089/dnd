@@ -1,7 +1,17 @@
+- aggiustare posizione azioni, e tutte le altre proprietà di un monster
 - nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
 - Contatore numeri degli status al passaggio del turno successivo. 
 - Il roll generale non conta i modificatori ma solo il tiro di dado. Escludere da questo roll il party.
 - Con reset, azzerare non solo i turni ma anche gli status ecc. Deve ripartire da 0. Magari aggiungere l'opzione di rimozione dei mostri.
 - Se valore di iniziativa è 0 allora usare il modificatore di Destrezza.
-- tutorial
+- inserire tutorial
 - La barra delle azioni dovrebbe avere più spazio in quanto sono quelle con più testo. Insieme alle bonus action e alle leggendarie.
+- Nella sezione Incantesimi, nella parte di durata e tempo di lancio vorrei fare una cosa con doppio menù a tendina, ovvero: nel primo menù lasciare il numero, mentre nel secondo inserire queste tempistiche:
+    - Azione
+    - Azione bonus
+    - Reazione
+    - Round
+    - Minuto/i
+    - Ora/e
+    - Giorno/i
+E mettere la sezione effetto come area più grande per scrivere dato  che ci sono per alcuni Incantesimi di livello alto molti effetti da gestire.

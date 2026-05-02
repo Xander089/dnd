@@ -9,6 +9,8 @@ import MonsterHeader from "./MonsterHeader";
 
 type SpellEntry = Spell & { id: number };
 
+const SPELL_ENUM_OPTIONS = ["", "Actions", "Bonus Actions", "Reactions", "Rounds", "Minutes", "Hours", "Days"];
+
 export default function Grimoire() {
   const [spells, setSpells] = useState<SpellEntry[]>(Dao.getSpells());
   const [showAddNew, setShowAddNew] = useState(false);
@@ -86,13 +88,15 @@ function SpellRow({
   const [school, setSchool] = useState(spell.school);
   const [level, setLevel] = useState(spell.level);
   const [castingTime, setCastingTime] = useState(spell.castingTime);
+  const [castingTimeEnumValue, setCastingTimeEnumValue] = useState(spell.castingTimeEnumValue ?? "");
   const [range, setRange] = useState(spell.range);
   const [duration, setDuration] = useState(spell.duration);
+  const [durationEnumValue, setDurationEnumValue] = useState(spell.durationEnumValue ?? "");
   const [effect, setEffect] = useState(spell.effect);
   const [deleteVisible, setDeleteVisible] = useState(false);
 
   const save = () => {
-    onUpdate(spell.id, { name, school, level, castingTime, range, duration, effect });
+    onUpdate(spell.id, { name, school, level, castingTime, castingTimeEnumValue, range, duration, durationEnumValue, effect });
   };
 
   return (
@@ -115,6 +119,12 @@ function SpellRow({
           <input type="text" value={castingTime} onChange={(e) => setCastingTime(e.target.value)} onBlur={save} />
         </div>
         <div className="grimoire-container input-container spell-number">
+          <p className="stat-label">Cast Unit</p>
+          <select value={castingTimeEnumValue} onChange={(e) => { setCastingTimeEnumValue(e.target.value); }} onBlur={save}>
+            {SPELL_ENUM_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt || "—"}</option>)}
+          </select>
+        </div>
+        <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Range</p>
           <input type="text" value={range} onChange={(e) => setRange(e.target.value)} onBlur={save} />
         </div>
@@ -122,9 +132,21 @@ function SpellRow({
           <p className="stat-label">Duration</p>
           <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} onBlur={save} />
         </div>
+        <div className="grimoire-container input-container spell-number">
+          <p className="stat-label">Dur. Unit</p>
+          <select value={durationEnumValue} onChange={(e) => { setDurationEnumValue(e.target.value); }} onBlur={save}>
+            {SPELL_ENUM_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt || "—"}</option>)}
+          </select>
+        </div>
         <div className="grimoire-container input-container spell-effect-container">
           <p className="stat-label">Effect</p>
-          <input type="text" value={effect} onChange={(e) => setEffect(e.target.value)} onBlur={save} />
+          <textarea
+          style={{minWidth: "9rem"}}
+          value={effect}
+          onChange={(e) =>setEffect(e.target.value)}
+          onBlur={save}
+        />
+
         </div>
         <div className="button-trash-container">
           <button
@@ -160,8 +182,10 @@ function AddSpell({
     school: "",
     level: 0,
     castingTime: "",
+    castingTimeEnumValue: "",
     range: "",
     duration: "",
+    durationEnumValue: "",
     effect: "",
   });
 
@@ -194,15 +218,27 @@ function AddSpell({
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Cast Time</p>
-          <input type="text" value={spell.castingTime} onChange={(e) => set("castingTime", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.castingTime} onChange={(e) => set("castingTime", e.target.value)} />
+        </div>
+        <div className="input-container spell-number">
+          <p className="stat-label">Cast Unit</p>
+          <select value={spell.castingTimeEnumValue ?? ""} onChange={(e) => set("castingTimeEnumValue", e.target.value)}>
+            {SPELL_ENUM_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt || "—"}</option>)}
+          </select>
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Range</p>
-          <input type="text" value={spell.range} onChange={(e) => set("range", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.range} onChange={(e) => set("range", e.target.value)} />
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Duration</p>
-          <input type="text" value={spell.duration} onChange={(e) => set("duration", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.duration} onChange={(e) => set("duration", e.target.value)} />
+        </div>
+        <div className="input-container spell-number">
+          <p className="stat-label">Dur. Unit</p>
+          <select value={spell.durationEnumValue ?? ""} onChange={(e) => set("durationEnumValue", e.target.value)}>
+            {SPELL_ENUM_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt || "—"}</option>)}
+          </select>
         </div>
         <div className="input-container spell-effect-container">
           <p className="stat-label">Effect</p>

@@ -488,9 +488,9 @@ function OtherStats(props: any) {
                   <p className="spell-tooltip-name">{spell.name}</p>
                   <p><b>School:</b> {spell.school}</p>
                   <p><b>Level:</b> {spell.level}</p>
-                  <p><b>Casting Time:</b> {spell.castingTime}</p>
+                  <p><b>Casting Time:</b> {spell.castingTime}{spell.castingTimeEnumValue ? ` ${spell.castingTimeEnumValue}` : ""}</p>
                   <p><b>Range:</b> {spell.range}</p>
-                  <p><b>Duration:</b> {spell.duration}</p>
+                  <p><b>Duration:</b> {spell.duration}{spell.durationEnumValue ? ` ${spell.durationEnumValue}` : ""}</p>
                   {spell.effect && <p><b>Effect:</b> {spell.effect}</p>}
                 </div>
               </div>
