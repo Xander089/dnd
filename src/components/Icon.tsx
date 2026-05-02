@@ -18,9 +18,10 @@ import React from 'react';
 const PATHS: Record<string, React.ReactNode> = {
   sword: (
     <>
-      <path d="M14.5 3.5 L20.5 3.5 L20.5 9.5 L10 20 L7 21 L4 18 L5 15 Z" />
-      <line x1="11" y1="13" x2="14" y2="16" />
-      <line x1="4" y1="18" x2="2.5" y2="21.5" />
+      <path d="M21 2 L22 3 L9 17 L7 15 Z" fill="currentColor" stroke="none" />
+      <path d="M4 13 L5 12 L12 19 L11 20 Z" fill="currentColor" stroke="none" />
+      <path d="M7 15 L9 17 L5 21 L3 19 Z" fill="currentColor" stroke="none" />
+      <circle cx="3" cy="21" r="2" fill="currentColor" stroke="none" />
     </>
   ),
   shield: (
