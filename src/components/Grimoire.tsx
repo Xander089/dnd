@@ -112,15 +112,15 @@ function SpellRow({
         </div>
         <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Cast Time</p>
-          <input type="number" value={castingTime} onChange={(e) => setCastingTime(parseInt(e.target.value) || 0)} onBlur={save} />
+          <input type="text" value={castingTime} onChange={(e) => setCastingTime(e.target.value)} onBlur={save} />
         </div>
         <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Range</p>
-          <input type="number" value={range} onChange={(e) => setRange(parseInt(e.target.value) || 0)} onBlur={save} />
+          <input type="text" value={range} onChange={(e) => setRange(e.target.value)} onBlur={save} />
         </div>
         <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Duration</p>
-          <input type="number" value={duration} onChange={(e) => setDuration(parseInt(e.target.value) || 0)} onBlur={save} />
+          <input type="text" value={duration} onChange={(e) => setDuration(e.target.value)} onBlur={save} />
         </div>
         <div className="grimoire-container input-container spell-effect-container">
           <p className="stat-label">Effect</p>
@@ -159,9 +159,9 @@ function AddSpell({
     name: "",
     school: "",
     level: 0,
-    castingTime: 0,
-    range: 0,
-    duration: 0,
+    castingTime: "",
+    range: "",
+    duration: "",
     effect: "",
   });
 
@@ -194,15 +194,15 @@ function AddSpell({
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Cast Time</p>
-          <input type="number" value={spell.castingTime} onChange={(e) => set("castingTime", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.castingTime} onChange={(e) => set("castingTime", parseInt(e.target.value) || 0)} />
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Range</p>
-          <input type="number" value={spell.range} onChange={(e) => set("range", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.range} onChange={(e) => set("range", parseInt(e.target.value) || 0)} />
         </div>
         <div className="input-container spell-number">
           <p className="stat-label">Duration</p>
-          <input type="number" value={spell.duration} onChange={(e) => set("duration", parseInt(e.target.value) || 0)} />
+          <input type="text" value={spell.duration} onChange={(e) => set("duration", parseInt(e.target.value) || 0)} />
         </div>
         <div className="input-container spell-effect-container">
           <p className="stat-label">Effect</p>

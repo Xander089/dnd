@@ -39,9 +39,9 @@ export type Spell = {
   name: string,
   school: string,
   level: number,
-  castingTime: number,
-  range: number,
-  duration: number,
+  castingTime: string,
+  range: string,
+  duration: string,
   effect: string
 }
 
@@ -65,4 +65,5 @@ export type MonsterProperties = {
   bonus_actions: string, // text area
   legendary_actions: string, // text area
   reactions: string, // text area
+  vulnerability: string //text area
 }
