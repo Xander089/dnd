@@ -32,6 +32,8 @@
 .grimoire-tab textarea:focus {
   border-color: var(--tome-rune);
   box-shadow: 0 0 0 2px rgba(157,107,255,0.25);
+  background: linear-gradient(180deg, #3a2658, #221634);
+
 }
 .grimoire-tab button {
   background: linear-gradient(180deg, #2c1d44, #1a1124);
@@ -98,4 +100,8 @@
 .spell-effect-container {
   flex: 1;
   min-width: 8rem;
+}
+
+.grimoire-container{
+  max-width: 6rem !important;
 }

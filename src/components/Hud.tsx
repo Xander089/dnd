@@ -63,7 +63,7 @@ function Hud(props: any) {
 
           <button
             className="hud-arrow"
-            style={{ width: "2.5rem" }}
+            style={{ width: "3.5rem" }}
             onClick={handleIncrement}
           >
             <Icon name="chevron-right" />

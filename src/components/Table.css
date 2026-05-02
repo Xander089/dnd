@@ -74,8 +74,8 @@
 }
 
 .larger-container { max-width: 6rem; }
-.member .input-container { max-width: 6rem; flex: 0 0 auto; }
-.member .input-name { max-width: 11rem; flex: 1 1 11rem; min-width: 9rem; }
+.member .input-container { max-width: 5rem; flex: 0 0 auto; }
+.member .input-name { max-width: 9rem; flex: 1 1 11rem; min-width: 9rem; }
 .member-header .input-container { min-width: 4rem; }
 .input-container h3 { border-radius: 2px; }
 .member .damage-button { margin-left: 1.5rem; }
@@ -155,7 +155,7 @@
   box-sizing: border-box;
 }
 
-.member .input-name { max-width: 11rem; }
+.member .input-name { max-width: 9rem; }
 
 /* ---- HP color states ---- */
 .faint        { border-color: var(--life)   !important; background: rgba(139,26,26,0.12) !important; color: var(--life); font-weight: 700; }

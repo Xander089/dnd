@@ -186,7 +186,10 @@ function Member(props: any) {
         bg={player?.type === "player" ? warrior : orc}
       /> */}
       <div className="member">
-        <div className="input-container larger-container input-name">
+        <div 
+        style={{ marginLeft: "2rem"}}
+        className="input-container larger-container input-name"
+        >
           <p className="stat-label">
             {player?.type === "monster" ? "Monster" : "Player"}
           </p>

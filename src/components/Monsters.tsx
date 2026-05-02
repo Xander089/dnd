@@ -306,7 +306,7 @@ function Member(props: any) {
   return (
     <div className="member-border monster-bg" id={player?.id + "_" + player?.category}>
       <div className="member">
-        <div className="input-container input-name">
+        <div className="input-container input-name monster-name">
           <p className="stat-label">Type</p>
           <input
             type={"text"}

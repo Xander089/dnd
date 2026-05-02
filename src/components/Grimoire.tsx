@@ -98,31 +98,31 @@ function SpellRow({
   return (
     <div className="member-border">
       <div className="member spell-row">
-        <div className="input-container spell-name-container">
+        <div className="grimoire-container input-container spell-name-container">
           <p className="stat-label">Name</p>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} onBlur={save} />
         </div>
-        <div className="input-container">
+        <div className="grimoire-container input-container">
           <p className="stat-label">School</p>
           <input type="text" value={school} onChange={(e) => setSchool(e.target.value)} onBlur={save} />
         </div>
-        <div className="input-container spell-number">
+        <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Level</p>
           <input type="number" value={level} onChange={(e) => setLevel(parseInt(e.target.value) || 0)} onBlur={save} />
         </div>
-        <div className="input-container spell-number">
+        <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Cast Time</p>
           <input type="number" value={castingTime} onChange={(e) => setCastingTime(parseInt(e.target.value) || 0)} onBlur={save} />
         </div>
-        <div className="input-container spell-number">
+        <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Range</p>
           <input type="number" value={range} onChange={(e) => setRange(parseInt(e.target.value) || 0)} onBlur={save} />
         </div>
-        <div className="input-container spell-number">
+        <div className="grimoire-container input-container spell-number">
           <p className="stat-label">Duration</p>
           <input type="number" value={duration} onChange={(e) => setDuration(parseInt(e.target.value) || 0)} onBlur={save} />
         </div>
-        <div className="input-container spell-effect-container">
+        <div className="grimoire-container input-container spell-effect-container">
           <p className="stat-label">Effect</p>
           <input type="text" value={effect} onChange={(e) => setEffect(e.target.value)} onBlur={save} />
         </div>
