@@ -258,6 +258,7 @@ function MonsterPropsOptional({
       <div className="input-container-wide">
         <p className="stat-label">Cond. Immunities</p>
         <textarea
+          style={{maxWidth : "12rem"}}
           value={monsterProps.condition_immunities ?? ""}
           onChange={(e) =>
             handleMonsterProp("condition_immunities", e.target.value)

@@ -12,3 +12,13 @@
 - ! ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
 - ! nella history, inserire ad ogni messaggio l'orario in cui viene eseguita l'azione. Inoltre, qunado l'utente preme F5, inserire in history data e ora. Infine, se si superano le 00:00 AM locali, inserire sempre nella history un messaggio che segnali che si è superata la mezzanotte
 - ! Ho aggiunto da claude design il file Icon.tsx che deve sostituire CustomIcon.tsx. Claude design chiede di fare ciò: Per sostituire le icone: importa Icon da components/Icon.tsx e sostituisci <CustomIcon name="..." /> con <Icon name="..." />. I nomi disponibili sono in cima al file.
+- !reset sezione defeated
+- ! nel menu a sinistra inserire grimorio degli incantesimi: 
+    - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
+    - nella sezione mostri ho il flag "incantesimi".
+    - se per un mostro ho flaggato, nel campo in game se lo clicco vedo
+    - incantesimi: per loro simbolo "@" selezione multi selection. se digito un incantesimo ne compare un'altra @. In game ho un mostro che ha N incantesimi selezionati alla creazione, se clicco sopra uno, vedo il dettaglio dell'incantesimo
+
+- ! Le caratteristiche fisse nella creazione dei mostri in orizzontale sotto le caratteristiche invece che a sx. 
+- ! aggiungere Vulnerabilità ai Danni
+- ! Il tempo di lancio degli Incantesimi non é un numero purtroppo, dovrebbe essere un campo note. 🤔 come anche la durata e il raggio.
