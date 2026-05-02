@@ -246,7 +246,7 @@ function AddSpell({
         </div>
         <div className="button-trash-container">
           <button className="add-button add-button-monsters" disabled={isDisabled} onClick={handleAdd}>
-            Add
+            Save
           </button>
         </div>
       </div>

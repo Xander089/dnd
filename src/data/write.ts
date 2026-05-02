@@ -244,6 +244,19 @@ export class Dao {
     localStorage.setItem("TheGame", JSON.stringify(this.getEmptyGame()));
   }
 
+  static resetAllStatuses() {
+    const all = [...this.getPlayers("player"), ...this.getPlayers("monster")].filter(
+      (p) => p.isPlaying
+    );
+    all.forEach((p) => this.writePlayer({ ...p, statuses: [] }));
+  }
+
+  static deleteAllMonstersInGame() {
+    this.getPlayers("monster")
+      .filter((m) => m.name !== "")
+      .forEach((m) => this.deletePlayer(m.id));
+  }
+
   static #spellsKey = "Grimoire";
 
   static getSpells(): (Spell & { id: number })[] {

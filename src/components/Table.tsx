@@ -80,6 +80,7 @@ function Table(props: any) {
         setGame={props?.setGame}
         addHistoryRecord={props?.addHistoryRecord}
         handleStatusDurationForPlayer={props?.handleStatusDurationForPlayer}
+        refreshPlayingCharacters={props?.refreshPlayingCharacters}
       />
     </>
   );

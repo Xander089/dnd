@@ -170,6 +170,10 @@ function App() {
     setGame(Dao.getGame()); //aggiorno l'hud
   };
 
+  const refreshPlayingCharacters = () => {
+    setPlayers(ViewModel.getPlayersInitialState());
+  };
+
   const handleStatusDuration = (step: number) => {
     ViewModel.updateStatusDuration(step);
     setPlayers(ViewModel.getPlayersInitialState());
@@ -226,6 +230,7 @@ function App() {
           refreshPlayers={refreshPlayers}
           players={players}
           handleStatusDurationForPlayer={handleStatusDurationForPlayer}
+          refreshPlayingCharacters={refreshPlayingCharacters}
         />
       ) : (
         <></>
@@ -234,9 +239,7 @@ function App() {
         <Party
           game={game}
           setGame={setGame}
-          refreshPlayingCharacters={() => {
-            setPlayers(ViewModel.getPlayersInitialState());
-          }}
+          refreshPlayingCharacters={refreshPlayingCharacters}
         />
       ) : (
         <></>

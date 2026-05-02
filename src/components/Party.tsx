@@ -498,7 +498,7 @@ function AddMember(props: any) {
             disabled={isButtonAddDisabled()}
             onClick={handleAddClick}
           >
-            Add
+            Save
           </button>
         </div>
       </div>

@@ -45,9 +45,7 @@ function MonsterHeader(props: any) {
 function MonsterButtonWithToolTip(props: any) {
   return (
     <div>
-      <button style={{ width: "5rem" }} onClick={props?.onClick}>
-        {props?.description}
-      </button>
+      <button className="add-circle-btn" onClick={props?.onClick}>+</button>
     </div>
   );
 }

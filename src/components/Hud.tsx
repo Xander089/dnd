@@ -3,11 +3,13 @@ import Icon from "./Icon";
 import { decrement, Game, increment } from "../types/Game";
 import { Dao } from "../data/write";
 import ModalEditGame from "./dialogs/ModalEditGame";
+import ModalRemoveMonsters from "./dialogs/ModalRemoveMonsters";
 import { useState } from "react";
 
 function Hud(props: any) {
   const className = "hud ";
   const [editGameVisible, setEditGameVisible] = useState(false);
+  const [removeMonstersVisible, setRemoveMonstersVisible] = useState(false);
   const handleIncrement = () => {
     const game = increment(props?.game);
     Dao.writeGame(game);
@@ -28,9 +30,12 @@ function Hud(props: any) {
   // };
 
   const handleReset = () => {
+    Dao.resetAllStatuses();
     Dao.resetGame();
     props?.setGame(Dao.getGame());
+    props?.refreshPlayingCharacters?.();
     props?.addHistoryRecord("Il gioco viene resettato");
+    setRemoveMonstersVisible(true);
   };
 
   const modifyGame = (turns: number, steps: number) => {
@@ -62,10 +67,11 @@ function Hud(props: any) {
 
           <button
             className="hud-arrow"
-            style={{ width: "3.5rem" }}
+            style={{ width: "3rem" }}
             onClick={handleIncrement}
           >
-            <Icon name="chevron-right" />
+            {/* <Icon name="chevron-right" /> */}
+            →
           </button>
           <p className="current-turn">
             <b>
@@ -75,9 +81,9 @@ function Hud(props: any) {
           </p>
           <button
             onClick={() => setEditGameVisible(true)}
-            style={{ width: "4rem" }}
+            style={{ width: "6rem" }}
           >
-            Edit
+            Edit turn
           </button>
         </div>
         <div className="hud-right-buttons">
@@ -91,6 +97,17 @@ function Hud(props: any) {
         setEditGameVisible={setEditGameVisible}
         modifyGame={modifyGame}
         game={props?.game}
+      />
+      <ModalRemoveMonsters
+        visible={removeMonstersVisible}
+        onYes={() => {
+          Dao.deleteAllMonstersInGame();
+          Dao.resetGame();
+          props?.setGame(Dao.getGame());
+          props?.refreshPlayingCharacters?.();
+          setRemoveMonstersVisible(false);
+        }}
+        onNo={() => setRemoveMonstersVisible(false)}
       />
     </div>
   );

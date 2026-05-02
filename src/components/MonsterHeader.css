@@ -34,3 +34,14 @@
   letter-spacing: 0.06em;
   color: var(--ink);
 }
+
+.add-circle-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
