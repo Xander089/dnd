@@ -1,8 +1,7 @@
 import "../App.css";
 import { useState } from "react";
 import "./Monsters.css";
-import trash from "../assets/trash3.png";
-import CustomIcon from "./layout/CustomIcon";
+import Icon from "./Icon";
 import ModalDelete from "./dialogs/ModalDelete";
 import { Player } from "../types/GameTypes";
 import { Dao } from "../data/write";
@@ -125,7 +124,7 @@ function Member(props: any) {
   return (
     <div
       // key={player?.id + "_" + player?.category}
-      className="member-border"
+      className="member-border player-bg"
       id={player?.id + "_" + player?.category}
     >
       <div className="member">
@@ -269,7 +268,7 @@ function Member(props: any) {
             className="damage-button"
             onClick={() => setDeleteVisible(true)}
           >
-            <CustomIcon bg={trash} />
+            <Icon name="trash" />
           </button>
           {deleteVisible ? (
             <ModalDelete
@@ -369,7 +368,7 @@ function AddMember(props: any) {
   };
 
   return (
-    <div className="member-border">
+    <div className="member-border player-bg">
       <div className="member" style={{ alignItems: "center" }}>
         <div className="input-container party-name">
           <p className="stat-label">Name</p>

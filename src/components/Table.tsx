@@ -1,11 +1,8 @@
 import { useState } from "react";
 import "./Table.css";
-import sword from "../assets/sword.png";
-import cross from "../assets/green-cross-icon.png";
-import trash from "../assets/trash3.png";
 import warrior from "../assets/warrior.png";
 import orc from "../assets/orc.png";
-import CustomIcon from "./layout/CustomIcon";
+import Icon from "./Icon";
 import { Player, PlayerStatus } from "../types/GameTypes";
 import DamageCure from "./dialogs/ModalDamageCure";
 import { Dao } from "../data/write";
@@ -321,7 +318,7 @@ function Member(props: any) {
           className="member-button damage-button"
           onClick={openDamageDialog}
         >
-          <CustomIcon bg={sword} />
+          <Icon name="sword" />
         </button>
         <button
           style={{
@@ -331,7 +328,7 @@ function Member(props: any) {
           className="member-button"
           onClick={openCureDialog}
         >
-          <CustomIcon bg={cross} />
+          <Icon name="heart" />
         </button>
         <button
           style={{
@@ -341,7 +338,7 @@ function Member(props: any) {
           className="member-button"
           onClick={() => setRemoveVisible(true)}
         >
-          <CustomIcon bg={trash} />
+          <Icon name="trash" />
         </button>
         <div className="accordion">
           <button

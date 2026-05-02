@@ -1,8 +1,12 @@
+/* ================================================================
+   Hud (Game footer) — controlli turno
+   ================================================================ */
+
 .hud {
   grid-column: 2/20;
   grid-row: 12/13;
-  background-color: var(--yellow-light);
-  border-top: 1px solid #bbb;
+  background: linear-gradient(180deg, rgba(184,149,74,0.06), rgba(184,149,74,0.18));
+  border-top: 1px solid var(--ink-line);
 }
 
 .hud-container {
@@ -14,19 +18,24 @@
 .hud-container div {
   display: flex;
   align-items: center;
-
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .current-turn {
-  width: 10rem;
+  width: 12rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.05em;
+  color: var(--ink);
 }
+.current-turn b { color: var(--wine); }
 
 .hud-arrow {
-  transition: all 0.1s ease-in-out;
+  transition: all 0.12s ease-in-out;
+  background: linear-gradient(180deg, #f3dfb8, #e0c389);
+  border: 1px solid var(--gold-deep);
 }
 .hud-arrow:hover {
-  border: none;
-  background-color: var(--yellow);
-  transform: scale(1.1);
+  border-color: var(--ink);
+  background: linear-gradient(180deg, #f7e6c2, #d8b773);
+  transform: scale(1.08);
 }

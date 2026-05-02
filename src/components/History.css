@@ -1,25 +1,30 @@
+/* ================================================================
+   History — cronaca della sessione
+   ================================================================ */
+
 .history {
   grid-column: 14/20;
   grid-row: 6/13;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 23rem;
 }
-/* @media screen and (max-width: 900px) {
-  .history {
-    height: 40rem;
-  }
-} */
 
 .history-container {
-  padding: 0rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   z-index: -1;
 }
+
 .history-title {
-  border: 1px solid rgb(118, 118, 118);
+  border: 1px solid var(--ink-line);
   border-radius: 2px;
+  background:
+    var(--parchment-noise),
+    linear-gradient(180deg, rgba(255,250,225,0.5), rgba(240,222,190,0.5));
+  background-size: 200px 200px, auto;
+  box-shadow: 0 2px 6px rgba(60,40,15,0.15);
 }
 
 .collapsible-header {
@@ -27,18 +32,22 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.85rem;
-  color: #555;
+  padding: 0.4rem 0.7rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
   user-select: none;
 }
-
-.collapsible-header:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-}
+.collapsible-header:hover { background-color: rgba(184,149,74,0.10); }
 
 .history p {
-  margin: 0 0.5rem;
-  padding: 0;
-  font-size: 0.8rem;
+  margin: 0 0.7rem;
+  padding: 0.15rem 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  border-bottom: 1px dotted rgba(138,107,63,0.25);
 }
+.history li:last-child p { border-bottom: none; }

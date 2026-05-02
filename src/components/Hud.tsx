@@ -1,7 +1,5 @@
 import "./Hud.css";
-import back from "../assets/back.png";
-import forward from "../assets/forward.png";
-import CustomIcon from "./layout/CustomIcon";
+import Icon from "./Icon";
 import { decrement, Game, increment } from "../types/Game";
 import { Dao } from "../data/write";
 import ModalEditGame from "./dialogs/ModalEditGame";
@@ -60,7 +58,7 @@ function Hud(props: any) {
             style={{ width: "2.5rem" }}
             onClick={handleDecrement}
           >
-            <CustomIcon bg={back} />
+            <Icon name="chevron-left" />
           </button> */}
 
           <button
@@ -68,7 +66,7 @@ function Hud(props: any) {
             style={{ width: "2.5rem" }}
             onClick={handleIncrement}
           >
-            <CustomIcon bg={forward} />
+            <Icon name="chevron-right" />
           </button>
           <p className="current-turn">
             <b>

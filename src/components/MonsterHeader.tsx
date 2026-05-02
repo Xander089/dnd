@@ -8,9 +8,9 @@ function MonsterHeader(props: any) {
     setSearched(text);
     props?.filterPlayers(text);
   };
-
+  const customHeader = "header " + (props?.customHeaderClass ?? "")
   return (
-    <div className="header ">
+    <div className={customHeader}>
       <div className="header-container header-container-monsters">
         <h4
           style={{
@@ -35,7 +35,7 @@ function MonsterHeader(props: any) {
           onClick={() => {
             props?.setShowAddNew(!props?.showAddNew);
           }}
-          description="Add New"
+          description="Add"
         />
       </div>
     </div>

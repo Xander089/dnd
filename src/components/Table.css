@@ -1,10 +1,12 @@
+/* ================================================================
+   Table (combat) — eredita .player-bg / .monster-bg da Monsters.css
+   ================================================================ */
+
 .tab {
-  /* background-color: #fcd34d; */
-  border-bottom: 1px solid #bbb;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  border-bottom: 1px solid var(--ink-line);
   grid-column: 2/20;
   grid-row: 1/12;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -19,33 +21,20 @@
   grid-template-columns: 1fr;
 }
 
-.tab-right-hidden {
-  display: none;
-}
+.tab-right-hidden { display: none; }
 
-.left-small {
-  grid-column: 3/14;
-}
-
-.right-small {
-  grid-column: 2/20;
-}
-.left-small-right-small {
-  grid-column: 3/20;
-}
+.left-small         { grid-column: 3/14; }
+.right-small        { grid-column: 2/20; }
+.left-small-right-small { grid-column: 3/20; }
 
 .tab-container,
 .member-surrounder {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  /* overflow: scroll; */
+  gap: 1rem;
 }
-
-.tab-container > div {
-  padding: 0;
-}
+.tab-container > div { padding: 0; }
 
 .add-button {
   height: 0;
@@ -56,55 +45,50 @@
   width: 60%;
   display: flex;
   justify-content: end;
+  align-items: center;
+  gap: 0.4rem;
   padding: 0 1rem;
 }
 
+/* ---- Base member-border (sovrascritto da .player-bg / .monster-bg) ---- */
 .member-border {
-  border-radius: 6px;
+  border-radius: 2px;
   max-height: 600;
-  border: 1px solid #bbb;
-  /* background-color: var(--yellow); */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: max-height 1s ease-in-out;
+  border: 1px solid var(--ink-line);
+  box-shadow: 0 4px 8px rgba(60,40,15,0.20), 0 6px 20px rgba(60,40,15,0.18);
+  transition: max-height 1s ease-in-out, box-shadow .2s ease;
   position: relative;
+  background:
+    var(--parchment-noise),
+    linear-gradient(180deg, #f6e8c6 0%, #ead2a0 100%);
+  background-size: 200px 200px, auto;
 }
 
 .member {
   display: flex;
   align-items: center;
   gap: 1em;
-  padding: 0.25rem 0;
-  padding-bottom: 0.6rem;
-
+  padding: 0.6rem 0;
   position: relative;
-}
-.memberSelected {
-  border: 3px solid var(--red);
-  border-radius: 6px;
+  flex-wrap: wrap;
 }
 
-.larger-container {
-  max-width: 6rem;
-}
-
-.member .input-container {
-  max-width: 6rem;
-}
-
-.member-header .input-container {
-  min-width: 4rem;
-}
-
-.input-container h3 {
-  border-radius: 6px;
-}
-
-.member .damage-button {
-  margin-left: 1.5rem;
-}
-
+.larger-container { max-width: 6rem; }
+.member .input-container { max-width: 6rem; flex: 0 0 auto; }
+.member .input-name { max-width: 11rem; flex: 1 1 11rem; min-width: 9rem; }
+.member-header .input-container { min-width: 4rem; }
+.input-container h3 { border-radius: 2px; }
+.member .damage-button { margin-left: 1.5rem; }
 .member-button {
   margin-top: 1.2rem;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none;
+}
+.member-button:hover {
+  background: rgba(184,149,74,0.18) !important;
+  border-color: var(--gold) !important;
+  transform: none;
 }
 
 .accordion {
@@ -112,49 +96,30 @@
   top: 50;
   right: 1.5rem;
   cursor: pointer;
+  z-index: 3;
 }
+.accordionOpen  { animation: openAccordion 0.6s ease-out forwards; }
+.accordionClosed { animation: closeAccordion 0.6s ease-out forwards; }
+@keyframes openAccordion  { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes closeAccordion { 0% { opacity: 1; } 100% { opacity: 0; } }
 
-.accordionOpen {
-  animation: openAccordion 0.6s ease-out forwards;
-}
-.accordionClosed {
-  animation: closeAccordion 0.6s ease-out forwards;
-}
-
-@keyframes openAccordion {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes closeAccordion {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
+/* ---- Other stats expanded ---- */
 .other-stats {
   display: flex;
   gap: 1rem;
   padding: 0.5rem 1rem 0.25rem;
+  position: relative;
+  z-index: 2;
 }
-
-.other-stats .input-container {
-  max-width: 6rem;
-}
+.other-stats .input-container { max-width: 6rem; }
 
 .other-stats-monster-props {
   display: flex;
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(138,107,63,0.35);
   margin: 0 1rem 0.6rem;
+  position: relative;
+  z-index: 2;
 }
-
 .other-stats-left {
   display: flex;
   flex-direction: column;
@@ -162,10 +127,7 @@
   min-width: 13rem;
   padding: 0.75rem 1.5rem 0.75rem 0;
 }
-
-.other-stats-left .input-container {
-  max-width: none;
-}
+.other-stats-left .input-container { max-width: none; }
 
 .other-stats-right {
   display: flex;
@@ -174,132 +136,186 @@
   padding: 0.75rem 0 0.75rem 1.5rem;
   flex: 1;
   align-content: flex-start;
-  border-left: 2px solid #e8e8e8;
+  border-left: 2px solid rgba(138,107,63,0.25);
 }
-
-.mp-textarea-container {
-  min-width: 12rem;
-  flex: 1;
-}
+.mp-textarea-container { min-width: 12rem; flex: 1; }
 
 .other-stats-right textarea {
   margin: 0 1rem;
   width: calc(100% - 2rem);
   min-height: 4rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--ink-line);
   padding: 0.25em 0.5em;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
-  font-family: inherit;
+  border-radius: 2px;
+  background: rgba(255,248,225,0.55);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
   font-size: inherit;
   resize: none;
   box-sizing: border-box;
 }
 
+.member .input-name { max-width: 11rem; }
+
+/* ---- HP color states ---- */
+.faint        { border-color: var(--life)   !important; background: rgba(139,26,26,0.12) !important; color: var(--life); font-weight: 700; }
+.almost-faint { border-color: var(--orange) !important; background: rgba(168,85,28,0.10) !important; color: var(--orange); font-weight: 700; }
+.poison       { border-color: var(--violet) !important; background: rgba(120,60,160,0.08) !important; }
+
+.game-icon { position: absolute; right: 10%; top: 8%; }
+
+/* ================================================================
+   Selected (turno attivo) — bagliore dorato
+   ================================================================ */
+.memberSelected {
+  border-color: var(--gold) !important;
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 0 18px rgba(212, 176, 86, 0.5),
+    0 4px 8px rgba(60,40,15,0.20) !important;
+  animation: selected-pulse 2.6s ease-in-out infinite;
+}
+@keyframes selected-pulse {
+  0%,100% { box-shadow: 0 0 0 2px var(--gold), 0 0 14px rgba(212, 176, 86, 0.45), 0 4px 8px rgba(60,40,15,0.20); }
+  50%     { box-shadow: 0 0 0 2px var(--gold), 0 0 26px rgba(212, 176, 86, 0.7),  0 4px 8px rgba(60,40,15,0.20); }
+}
+
+/* ================================================================
+   PLAYER CARD (Table) — pergamena con angolo top-left ripiegato
+   ================================================================ */
+.member-border.player-bg {
+  --fold: 38px;
+  background:
+    var(--parchment-noise),
+    radial-gradient(ellipse 80% 60% at 60% 30%, rgba(255,240,200,0.55), transparent 70%),
+    linear-gradient(180deg, #f6e8c6 0%, #ead2a0 100%);
+  background-size: 200px 200px, auto, auto;
+  border: 1px solid transparent;
+  clip-path: polygon(var(--fold) 0, 100% 0, 100% 100%, 0 100%, 0 var(--fold));
+  filter: drop-shadow(0 4px 8px rgba(60,40,15,0.30));
+  box-shadow:
+    inset 0 0 0 1px rgba(120,80,30,0.18),
+    inset 0 0 24px rgba(160,110,50,0.18);
+}
+.member-border.player-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--fold); height: var(--fold);
+  background: linear-gradient(135deg, #fdf3d4 0%, #f5e3b6 55%, #d8bd80 100%);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  box-shadow: -1px 1px 3px rgba(80,50,15,0.35), inset 1px -1px 0 rgba(255,255,255,0.4);
+  pointer-events: none;
+  z-index: 2;
+}
+.member-border.player-bg::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: calc(var(--fold) + 6px);
+  height: calc(var(--fold) + 6px);
+  background:
+    radial-gradient(circle at 0 0, rgba(60,35,10,0.35), transparent 65%),
+    linear-gradient(135deg, transparent 49%, rgba(60,35,10,0.18) 50%, transparent 60%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ================================================================
+   MONSTER CARD (Table) — pergamena fredda + sangue top-left
+   ================================================================ */
+.member-border.monster-bg {
+  background:
+    var(--parchment-noise),
+    radial-gradient(ellipse 60% 45% at 80% 80%, rgba(40,55,70,0.16), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 20% 30%, rgba(60,75,90,0.14), transparent 70%),
+    linear-gradient(180deg, #d8d4c2 0%, #b8b6a8 100%);
+  background-size: 200px 200px, auto, auto, auto;
+  border: 1px solid #5a5a55;
+  filter: drop-shadow(0 4px 8px rgba(20,25,35,0.35));
+  box-shadow:
+    inset 0 0 0 1px rgba(60,70,80,0.30),
+    inset 0 0 30px rgba(40,50,60,0.18);
+}
+.member-border.monster-bg::before {
+  content: "";
+  position: absolute;
+  top: -2px; left: -2px;
+  width: 80px; height: 90px;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='90' viewBox='0 0 80 90'><g fill='%235a0e0e'><path d='M6 0 C 4 16, 12 22, 10 34 C 8 46, 14 52, 12 66 C 11 74, 14 78, 16 78 C 18 76, 18 70, 19 64 C 22 50, 16 42, 18 32 C 20 20, 12 14, 14 0 Z' opacity='.9'/><circle cx='16' cy='80' r='3' opacity='.9'/><circle cx='16' cy='86' r='1.6' opacity='.7'/><path d='M28 0 C 30 8, 26 12, 28 22 C 29 30, 25 36, 27 46 C 27 50, 25 52, 24 50 C 23 44, 25 36, 23 28 C 22 18, 26 10, 25 0 Z' opacity='.7'/><circle cx='40' cy='4' r='1.4'/><circle cx='52' cy='8' r='2'/><circle cx='62' cy='5' r='1.1'/><circle cx='70' cy='10' r='1.6'/><circle cx='8' cy='14' r='1.2'/></g></svg>");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 80px auto;
+  opacity: 0.95;
+  z-index: 2;
+}
+
+/* ---- Stat label (ridefinito qui per sicurezza) ---- */
 .stat-label {
   margin-top: 0;
   margin-bottom: 0.1rem;
   margin-left: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
   font-size: 0.8rem;
-  color: #555;
+  color: var(--ink-faint);
+  font-weight: 600;
 }
 
-.member .input-name {
-  max-width: 10rem;
-}
-
-.faint {
-  border: 1px solid var(--life);
-}
-
-.almost-faint {
-  border: 1px solid var(--orange);
-}
-
-.poison {
-  border: 1px solid var(--violet);
-}
-
-.game-icon {
-  position: absolute;
-  right: 10%;
-  top: 8%;
-}
-.monster-bg {
-  background-color: #fef3c7;
-}
-.player-bg {
-  background-color: #e0f2fe;
-}
-
+/* ---- Statuses ---- */
 .statuses-container {
   display: flex;
   flex-direction: column;
   min-width: 9rem;
+  position: relative;
+  z-index: 2;
 }
-
 .statuses-list {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   padding: 0 0.5rem;
   min-height: 2rem;
 }
-
 .status-entry {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.25rem;
 }
-
 .status-entry input[type="text"] {
-  width: 5rem;
-  margin: 0;
-  height: 1.6rem;
-  font-size: 0.75rem;
+  width: 5rem; margin: 0; height: 1.7rem; font-size: 0.8rem;
 }
-
 .status-entry input[type="number"] {
-  width: 3rem;
-  margin: 0;
-  height: 1.6rem;
-  font-size: 0.75rem;
+  width: 3rem; margin: 0; height: 1.7rem; font-size: 0.8rem;
 }
-
-.status-expired {
-  border: 1px solid var(--life) !important;
-}
+.status-expired { border: 1px solid var(--life) !important; }
 
 .status-remove-btn,
 .status-add-btn {
-  width: 1.4rem;
-  height: 1.4rem;
-  font-size: 0.8rem;
+  width: 1.5rem; height: 1.5rem;
+  font-size: 0.85rem;
   padding: 0;
   margin: 0;
   border-radius: 50%;
   line-height: 1;
 }
 
+/* ---- Flash (cure / damage) ---- */
 .flash-overlay {
   position: absolute;
   inset: 0;
-  border-radius: 6px;
+  border-radius: 2px;
   pointer-events: none;
   z-index: 10;
   animation: flash-fade 2s ease-out forwards;
 }
-
-.flash-cure {
-  background-color: rgba(34, 197, 94, 0.45);
-}
-
-.flash-damage {
-  background-color: rgba(239, 68, 68, 0.45);
-}
+.flash-cure   { background-color: rgba(34, 197, 94, 0.45); }
+.flash-damage { background-color: rgba(239, 68, 68, 0.45); }
 
 @keyframes flash-fade {
   from { opacity: 1; }
-  to { opacity: 0; }
+  to   { opacity: 0; }
 }

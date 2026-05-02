@@ -1,8 +1,7 @@
 import "../App.css";
 import "./Grimoire.css";
 import { useState } from "react";
-import trash from "../assets/trash3.png";
-import CustomIcon from "./layout/CustomIcon";
+import Icon from "./Icon";
 import ModalDelete from "./dialogs/ModalDelete";
 import { Spell } from "../types/GameTypes";
 import { Dao } from "../data/write";
@@ -41,13 +40,14 @@ export default function Grimoire() {
 
   return (
     <>
-      <MonsterHeader
+      <MonsterHeader 
+        customHeaderClass = "grimoire-header"
         Title="Grimoire"
         showAddNew={showAddNew}
         setShowAddNew={setShowAddNew}
         filterPlayers={filterSpells}
       />
-      <div className="tab">
+      <div className="tab grimoire-tab">
         <div className="tab-container">
           <div className="monster-tab-sub-container">
             <div className="member-surrounder">
@@ -131,7 +131,7 @@ function SpellRow({
             style={{ marginTop: "0.5rem", background: "transparent", border: "none" }}
             onClick={() => setDeleteVisible(true)}
           >
-            <CustomIcon bg={trash} />
+            <Icon name="trash" />
           </button>
           {deleteVisible && (
             <ModalDelete

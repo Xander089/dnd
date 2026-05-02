@@ -5,9 +5,7 @@
   gap: 1rem;
 }
 
-.settings-buttons-small {
-  margin-top: 0;
-}
+.settings-buttons-small { margin-top: 0; }
 
 .settings-buttons-small button {
   padding: 0.1em 1em;
@@ -17,17 +15,25 @@
 }
 
 .settings-download-textarea {
-  border: 1px solid #bbb;
-  border-radius: 6px;
+  border: 1px solid var(--ink-line);
+  border-radius: 2px;
   min-width: 100%;
   max-width: 100%;
   min-height: 10rem;
   max-height: 10rem;
-}
-.settings-subtitles {
-  margin: 0;
+  background: rgba(255,248,225,0.55);
+  font-family: 'Crimson Pro', Georgia, serif;
+  color: var(--ink);
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
-.modal-settings {
-  gap: 0.5rem;
+.settings-subtitles {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
 }
+
+.modal-settings { gap: 0.5rem; }

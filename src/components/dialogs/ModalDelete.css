@@ -3,25 +3,36 @@
   width: 100%;
   justify-content: flex-end;
   gap: 1rem;
+  margin-top: 0.6rem;
 }
 
 .modal-title {
   display: flex;
-  /* justify-content: center; */
   width: 100%;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--ink-line);
+  position: relative;
+}
+.modal-title::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .modal-title h3,
 .modal-delete-content p {
-  /* text-align: center; */
   margin: 0.5rem 0;
 }
 
 .modal-title h3 {
   margin-top: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--wine-deep);
+  box-shadow: none;
 }
 
 .modal-delete-content p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
 }

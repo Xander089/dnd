@@ -1,17 +1,100 @@
+/* ================================================================
+   Grimoire — tomo arcano (override del tab in stile notturno)
+   ================================================================ */
+
+/* Sovrascrive il .tab della pagina grimoire applicando una classe
+   alla root della pagina. Aggiungere className="grimoire-page tab"
+   al wrapper del componente. Per non toccare il TS, qui prendiamo
+   l'approccio: targettiamo direttamente il root della pagina con
+   un selettore basato sull'ordine dei children del .container. */
+
+/* Modalità "tomo": fondo notte sul tab del Grimoire.
+   Dato che la pagina è la 4ª, possiamo usare body:has(.grimoire-page)
+   ma per sicurezza serve aggiungere la classe a un wrapper.
+   Soluzione drop-in: il .tab successivo all'header del Grimoire
+   prende il bg dal selettore .grimoire-tab. Imposto qui le regole;
+   il file Grimoire.tsx aggiunge className "grimoire-tab" a .tab. */
+
+/* === Override pagina === */
+.grimoire-tab {
+  background:
+    radial-gradient(ellipse at center, var(--tome-bg-2) 0%, var(--tome-bg) 60%, var(--tome-leather) 100%);
+  color: var(--tome-text);
+}
+.grimoire-tab .stat-label { color: rgba(231,214,179,0.65); }
+.grimoire-tab input,
+.grimoire-tab textarea {
+  background: rgba(20,12,32,0.55);
+  color: var(--tome-text);
+  border-color: rgba(212,176,86,0.35);
+}
+.grimoire-tab input:focus,
+.grimoire-tab textarea:focus {
+  border-color: var(--tome-rune);
+  box-shadow: 0 0 0 2px rgba(157,107,255,0.25);
+}
+.grimoire-tab button {
+  background: linear-gradient(180deg, #2c1d44, #1a1124);
+  color: var(--tome-gold);
+  border: 1px solid rgba(212,176,86,0.55);
+  box-shadow:
+    0 0 0 1px rgba(212,176,86,0.15) inset,
+    0 0 8px rgba(157,107,255,0.18);
+}
+.grimoire-tab button:hover {
+  background: linear-gradient(180deg, #3a2658, #221634);
+  color: var(--tome-gold);
+  box-shadow:
+    0 0 0 1px var(--tome-gold) inset,
+    0 0 14px rgba(157,107,255,0.4);
+  border-color: var(--tome-gold);
+}
+
+/* === Header del Grimoire (override) === */
+.grimoire-header {
+  background: linear-gradient(180deg, rgba(212,176,86,0.10), rgba(212,176,86,0.04));
+  border-bottom-color: rgba(212,176,86,0.35) !important;
+}
+.grimoire-header h4 {
+  color: var(--tome-gold) !important;
+  text-shadow: 0 0 12px rgba(212,176,86,0.35);
+}
+
+/* === Spell card (sostituisce member-border per i Grimoire row) === */
+.grimoire-tab .member-border {
+  background:
+    radial-gradient(ellipse 50% 30% at 50% 0%, rgba(157,107,255,0.18), transparent 70%),
+    linear-gradient(180deg, #261738 0%, #18102a 100%);
+  border: 1px solid rgba(212,176,86,0.45);
+  border-radius: 2px;
+  color: var(--tome-text);
+  box-shadow:
+    0 0 0 1px rgba(212,176,86,0.12) inset,
+    0 4px 14px rgba(0,0,0,0.45),
+    0 0 18px rgba(157,107,255,0.06);
+  overflow: hidden;
+}
+.grimoire-tab .member-border:hover {
+  border-color: var(--tome-rune);
+  box-shadow:
+    0 0 0 1px var(--tome-rune) inset,
+    0 4px 18px rgba(0,0,0,0.55),
+    0 0 28px rgba(157,107,255,0.30);
+}
+
+/* ---- Layout righe spell ---- */
 .spell-row {
   align-items: center;
   flex-wrap: nowrap;
+  padding: 0.5rem 0.6rem;
 }
-
 .spell-name-container {
   min-width: 8rem;
-  max-width: 10rem;
+  max-width: 12rem;
 }
-
 .spell-number {
   max-width: 5rem;
 }
-
 .spell-effect-container {
   flex: 1;
   min-width: 8rem;

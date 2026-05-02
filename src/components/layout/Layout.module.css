@@ -5,6 +5,5 @@
   padding: 1em;
 }
 
-.link:hover {
-  color: var(--lighter);
-}
+.link { color: var(--ink); }
+.link:hover { color: var(--wine); }

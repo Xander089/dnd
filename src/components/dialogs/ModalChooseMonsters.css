@@ -5,7 +5,7 @@
 .search-input {
   width: 100%;
   margin: 0;
-  padding: 0 0.2rem;
+  padding: 0 0.4rem;
 }
 
 .search-modal-buttons {
@@ -16,14 +16,14 @@
 }
 
 .monster-category-list {
-  max-height: 10rem;
-
+  max-height: 12rem;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  overflow-y: scroll;
+  gap: 0.4rem;
+  overflow-y: auto;
+  padding-right: 0.3rem;
 }
 
 .monster-category-row {
@@ -32,11 +32,16 @@
   grid-template-columns: 3.5rem 2fr 1fr 1fr;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dotted rgba(138,107,63,0.30);
 }
+.monster-category-row:last-child { border-bottom: none; }
+
 .monster-category-row p {
   margin: 0;
   padding: 0;
   text-align: left;
+  color: var(--ink);
 }
 .monster-category-row input[type="number"] {
   margin: 0;
@@ -48,25 +53,33 @@
 .modal-title {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--ink-line);
+  position: relative;
 }
-.modal-choose-title {
-  margin-bottom: 1rem;
+.modal-title::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
+.modal-choose-title { margin-bottom: 1rem; }
+
 .modal-title h3,
-.modal-delete-content p {
-  margin: 0.5rem 0;
-}
+.modal-delete-content p { margin: 0.5rem 0; }
 
 .modal-title h3 {
   margin-top: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--wine-deep);
   box-shadow: none;
   padding: 0;
 }
 
 .modal-delete-content p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
 }
 
 .choose-monsters-header {
@@ -76,12 +89,17 @@
   grid-template-columns: 3.5rem 2fr 1fr 1fr;
   gap: 0.5rem;
   align-items: center;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(138,107,63,0.40);
 }
 
 .choose-monsters-header p {
   margin: 0;
   padding: 0;
-  color: #888;
+  color: var(--ink-faint);
+  font-family: 'Cormorant Garamond', serif;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;

@@ -11,6 +11,7 @@
 
 - ! ad ogni rimozione creatura, loggarlo in una sezione, da capire se nuova, contiene l'elenco dei mostri sconfitti con i loro punti esperienza
 - ! nella history, inserire ad ogni messaggio l'orario in cui viene eseguita l'azione. Inoltre, qunado l'utente preme F5, inserire in history data e ora. Infine, se si superano le 00:00 AM locali, inserire sempre nella history un messaggio che segnali che si è superata la mezzanotte
+- ! Ho aggiunto da claude design il file Icon.tsx che deve sostituire CustomIcon.tsx. Claude design chiede di fare ciò: Per sostituire le icone: importa Icon da components/Icon.tsx e sostituisci <CustomIcon name="..." /> con <Icon name="..." />. I nomi disponibili sono in cima al file.
 - nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
 - ! nel menu a sinistra inserire grimorio degli incantesimi: 
     - la lista degli incantesimi (nome, scuola, livello, tempo di lancio, gittata, durata, effetto)
