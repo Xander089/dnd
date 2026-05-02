@@ -522,10 +522,9 @@ function AddMember(props: any) {
   return (
     <div className="member-border monster-bg">
       <div className={selectedClassName}>
-        <div className="input-container">
+        <div className="input-container monster-name">
           <p className="stat-label">Type</p>
           <input
-            className="input-name"
             type={"text"}
             value={category?.category}
             onChange={(event: any) =>
