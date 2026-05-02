@@ -142,7 +142,7 @@
 .mp-textarea-container { min-width: 12rem; flex: 1; }
 
 .other-stats-right textarea {
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   width: calc(100% - 2rem);
   min-height: 4rem;
   border: 1px solid var(--ink-line);
@@ -257,7 +257,7 @@
 .stat-label {
   margin-top: 0;
   margin-bottom: 0.1rem;
-  margin-left: 1.2rem;
+  /* margin-left: 1.2rem; */
   font-family: 'Cormorant Garamond', serif;
   font-variant: small-caps;
   letter-spacing: 0.08em;

@@ -64,11 +64,12 @@ function Table(props: any) {
             </div>
             <div className={expand ? "tab-right-hidden" : ""}>
               <Note collapse={false} />
-              <DefeatedLog entries={props?.defeatedLog ?? []} />
+              <DefeatedLog entries={props?.defeatedLog ?? []} onClear={props?.clearDefeatedLog} />
               <History
                 collapse={false}
                 game={props?.game}
                 history={props?.history}
+                onClear={props?.clearHistory}
               />
             </div>
           </div>
@@ -404,13 +405,14 @@ function OtherStats(props: any) {
 
   const rightFields = [
     { label: "Senses", value: mp?.senses },
-    { label: "Traits", value: mp?.traits },
+    { label: "Special Traits", value: mp?.traits },
     { label: "Actions", value: mp?.actions },
     { label: "Bonus Actions", value: mp?.bonus_actions },
     { label: "Reactions", value: mp?.reactions },
     { label: "Legendary Actions", value: mp?.legendary_actions },
     { label: "Abilities", value: mp?.abilities },
     { label: "Resistances", value: mp?.resistances },
+    { label: "Vulnerabilities", value: mp?.vulnerability },
     { label: "Dmg. Immunities", value: mp?.damage_immunities },
     { label: "Cond. Immunities", value: mp?.condition_immunities },
   ].filter((f) => !!f.value) as { label: string; value: string }[];

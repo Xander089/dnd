@@ -76,7 +76,7 @@ export default function Monsters(props: any) {
   );
 }
 
-function MonsterPropsLeft({
+function MonsterPropsAlways({
   monsterProps,
   handleMonsterProp,
   onBlur,
@@ -86,7 +86,7 @@ function MonsterPropsLeft({
   onBlur?: () => void;
 }) {
   return (
-    <div className="monster-props-left">
+    <div className="monster-props-always">
       <div className="input-container">
         <p className="stat-label">AC</p>
         <input
@@ -96,6 +96,55 @@ function MonsterPropsLeft({
           onBlur={onBlur}
         />
       </div>
+      <div className="input-container">
+        <p className="stat-label">Creature Type</p>
+        <input
+          type="text"
+          value={monsterProps.type ?? ""}
+          onChange={(e) => handleMonsterProp("type", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container">
+        <p className="stat-label">Alignment</p>
+        <input
+          type="text"
+          value={monsterProps.alignment ?? ""}
+          onChange={(e) => handleMonsterProp("alignment", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Special Traits</p>
+        <textarea
+          value={monsterProps.traits ?? ""}
+          onChange={(e) => handleMonsterProp("traits", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Actions</p>
+        <textarea
+          value={monsterProps.actions ?? ""}
+          onChange={(e) => handleMonsterProp("actions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+    </div>
+  );
+}
+
+function MonsterPropsOptional({
+  monsterProps,
+  handleMonsterProp,
+  onBlur,
+}: {
+  monsterProps: Partial<MonsterProperties>;
+  handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
+  onBlur?: () => void;
+}) {
+  return (
+    <div className="monster-props-optional">
       <div className="input-container">
         <p className="stat-label">Challenge Rating</p>
         <input
@@ -128,24 +177,6 @@ function MonsterPropsLeft({
         />
       </div>
       <div className="input-container">
-        <p className="stat-label">Creature Type</p>
-        <input
-          type="text"
-          value={monsterProps.type ?? ""}
-          onChange={(e) => handleMonsterProp("type", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container">
-        <p className="stat-label">Alignment</p>
-        <input
-          type="text"
-          value={monsterProps.alignment ?? ""}
-          onChange={(e) => handleMonsterProp("alignment", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container">
         <p className="stat-label">Saving Throws</p>
         <input
           type="text"
@@ -154,21 +185,6 @@ function MonsterPropsLeft({
           onBlur={onBlur}
         />
       </div>
-    </div>
-  );
-}
-
-function MonsterPropsRight({
-  monsterProps,
-  handleMonsterProp,
-  onBlur,
-}: {
-  monsterProps: Partial<MonsterProperties>;
-  handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
-  onBlur?: () => void;
-}) {
-  return (
-    <div className="monster-props-right">
       <div className="input-container-wide">
         <p className="stat-label">Senses</p>
         <textarea
@@ -178,18 +194,10 @@ function MonsterPropsRight({
         />
       </div>
       <div className="input-container-wide">
-        <p className="stat-label">Traits</p>
+        <p className="stat-label">Abilities</p>
         <textarea
-          value={monsterProps.traits ?? ""}
-          onChange={(e) => handleMonsterProp("traits", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container-wide">
-        <p className="stat-label">Actions</p>
-        <textarea
-          value={monsterProps.actions ?? ""}
-          onChange={(e) => handleMonsterProp("actions", e.target.value)}
+          value={monsterProps.abilities ?? ""}
+          onChange={(e) => handleMonsterProp("abilities", e.target.value)}
           onBlur={onBlur}
         />
       </div>
@@ -220,18 +228,18 @@ function MonsterPropsRight({
         />
       </div>
       <div className="input-container-wide">
-        <p className="stat-label">Abilities</p>
-        <textarea
-          value={monsterProps.abilities ?? ""}
-          onChange={(e) => handleMonsterProp("abilities", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container-wide">
         <p className="stat-label">Resistances</p>
         <textarea
           value={monsterProps.resistances ?? ""}
           onChange={(e) => handleMonsterProp("resistances", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Vulnerabilities</p>
+        <textarea
+          value={monsterProps.vulnerability ?? ""}
+          onChange={(e) => handleMonsterProp("vulnerability", e.target.value)}
           onBlur={onBlur}
         />
       </div>
@@ -441,12 +449,12 @@ function Member(props: any) {
       </div>
       {expanded && (
         <div className="monster-properties">
-          <MonsterPropsLeft
+          <MonsterPropsAlways
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
             onBlur={handleStats}
           />
-          <MonsterPropsRight
+          <MonsterPropsOptional
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
             onBlur={handleStats}
@@ -647,11 +655,11 @@ function AddMember(props: any) {
       </div>
       {addExpanded && (
         <div className="monster-properties">
-          <MonsterPropsLeft
+          <MonsterPropsAlways
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
           />
-          <MonsterPropsRight
+          <MonsterPropsOptional
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
           />

@@ -282,6 +282,10 @@ export class DefeatedMonsters {
     const current = this.getAll();
     localStorage.setItem(this.#key, JSON.stringify([...current, entry]));
   }
+
+  static clear(): void {
+    localStorage.removeItem(this.#key);
+  }
 }
 
 export class History {

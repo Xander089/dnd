@@ -54,6 +54,16 @@ function App() {
     setDefeatedLog(DefeatedMonsters.getAll());
   };
 
+  const clearDefeatedLog = () => {
+    DefeatedMonsters.clear();
+    setDefeatedLog([]);
+  };
+
+  const clearHistory = () => {
+    History.deleteAll();
+    setHistory([]);
+  };
+
   const refreshMonstersCategories = () => {
     setMonstersCategories(ViewModel.sort(ViewModel.getCategories()));
   };
@@ -207,6 +217,8 @@ function App() {
           addHistoryRecord={addHistoryRecord}
           defeatedLog={defeatedLog}
           addDefeatedLog={addDefeatedLog}
+          clearDefeatedLog={clearDefeatedLog}
+          clearHistory={clearHistory}
           applyCureDamageToPlayers={applyCureDamageToPlayers}
           removePlayer={removePlayer}
           applyManualRoll={applyManualRoll}

@@ -80,31 +80,30 @@
 
 .monster-properties {
   display: flex;
+  flex-direction: column;
   border-top: 1px solid rgba(138,107,63,0.35);
   position: relative;
   z-index: 2;
 }
 
-.monster-props-left {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-width: 13rem;
-  padding: 0.75rem 1.5rem 1rem;
-  border-right: 2px solid rgba(138,107,63,0.25);
-}
-
-.monster-props-left .input-container {
-  max-width: none;
-  width: 100%;
-}
-
-.monster-props-right {
+.monster-props-always {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 0.75rem 1rem 1rem;
-  flex: 1;
+  align-content: flex-start;
+  border-bottom: 1px solid rgba(138,107,63,0.25);
+}
+
+.monster-props-always .input-container {
+  max-width: none;
+}
+
+.monster-props-optional {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1rem 1rem;
   align-content: flex-start;
 }
 
@@ -115,10 +114,10 @@
 .input-container-wide .stat-label {
   margin-top: 0;
   margin-bottom: 0.3rem;
-  margin-left: 1.2rem;
+  /* margin-left: 1.2rem; */
 }
 .input-container-wide textarea {
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   width: calc(100% - 2rem);
   min-height: 4rem;
   border: 1px solid var(--ink-line);
