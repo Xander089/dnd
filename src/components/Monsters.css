@@ -330,7 +330,7 @@
 
 .spell-search-wrapper {
   position: relative;
-  width: 100%;
+  width: calc(100% - 2rem);
 }
 
 .spell-search-wrapper input {

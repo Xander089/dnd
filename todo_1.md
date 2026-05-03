@@ -22,5 +22,6 @@
 - ! Le caratteristiche fisse nella creazione dei mostri in orizzontale sotto le caratteristiche invece che a sx. 
 - ! aggiungere Vulnerabilità ai Danni
 - ! Il tempo di lancio degli Incantesimi non é un numero purtroppo, dovrebbe essere un campo note. 🤔 come anche la durata e il raggio.
-- Contatore numeri degli status al passaggio del turno successivo. 
-- Con reset, azzerare non solo i turni ma anche gli status ecc. Deve ripartire da 0. Magari aggiungere l'opzione di rimozione dei mostri.
+- ! Contatore numeri degli status al passaggio del turno successivo. 
+- ! Con reset, azzerare non solo i turni ma anche gli status ecc. Deve ripartire da 0. Magari aggiungere l'opzione di rimozione dei mostri.
+- ! aggiustare posizione azioni, e tutte le altre proprietà di un monster

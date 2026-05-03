@@ -80,10 +80,12 @@ function MonsterPropsAlways({
   monsterProps,
   handleMonsterProp,
   onBlur,
+  onSpellsChange
 }: {
   monsterProps: Partial<MonsterProperties>;
   handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
   onBlur?: () => void;
+  onSpellsChange?: (ids: number[]) => void;
 }) {
   return (
     <div className="monster-props-always">
@@ -105,7 +107,9 @@ function MonsterPropsAlways({
           onBlur={onBlur}
         />
       </div>
-      <div className="input-container">
+      <div className="input-container"
+        style={{ borderInlineEnd: "1px solid rgba(138, 107, 63, 0.25)", paddingInlineEnd: "1rem"}}
+      >
         <p className="stat-label">Alignment</p>
         <input
           type="text"
@@ -121,12 +125,49 @@ function MonsterPropsAlways({
           onChange={(e) => handleMonsterProp("traits", e.target.value)}
           onBlur={onBlur}
         />
+        <SpellMultiSelect
+        selectedIds={monsterProps.spells ?? []}
+        onChange={onSpellsChange ?? ((ids) => handleMonsterProp("spells", ids))}
+      />
       </div>
-      <div className="input-container-wide">
+    </div>
+  );
+}
+
+function MonsterPropsAction({
+  monsterProps,
+  handleMonsterProp,
+  onBlur,
+}: {
+  monsterProps: Partial<MonsterProperties>;
+  handleMonsterProp: (key: keyof MonsterProperties, value: any) => void;
+  onBlur?: () => void;
+}) {
+  return (
+    <div className="monster-props-always">
+       <div className="input-container-wide">
         <p className="stat-label">Actions</p>
         <textarea
           value={monsterProps.actions ?? ""}
           onChange={(e) => handleMonsterProp("actions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Bonus Actions</p>
+        <textarea
+          value={monsterProps.bonus_actions ?? ""}
+          onChange={(e) => handleMonsterProp("bonus_actions", e.target.value)}
+          onBlur={onBlur}
+        />
+      </div>
+      <div className="input-container-wide">
+        <p className="stat-label">Legendary Actions</p>
+        <textarea
+          value={monsterProps.legendary_actions ?? ""}
+          onChange={(e) =>
+            handleMonsterProp("legendary_actions", e.target.value)
+          }
           onBlur={onBlur}
         />
       </div>
@@ -204,28 +245,10 @@ function MonsterPropsOptional({
         />
       </div>
       <div className="input-container-wide">
-        <p className="stat-label">Bonus Actions</p>
-        <textarea
-          value={monsterProps.bonus_actions ?? ""}
-          onChange={(e) => handleMonsterProp("bonus_actions", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container-wide">
         <p className="stat-label">Reactions</p>
         <textarea
           value={monsterProps.reactions ?? ""}
           onChange={(e) => handleMonsterProp("reactions", e.target.value)}
-          onBlur={onBlur}
-        />
-      </div>
-      <div className="input-container-wide">
-        <p className="stat-label">Legendary Actions</p>
-        <textarea
-          value={monsterProps.legendary_actions ?? ""}
-          onChange={(e) =>
-            handleMonsterProp("legendary_actions", e.target.value)
-          }
           onBlur={onBlur}
         />
       </div>
@@ -266,10 +289,6 @@ function MonsterPropsOptional({
           onBlur={onBlur}
         />
       </div>
-      <SpellMultiSelect
-        selectedIds={monsterProps.spells ?? []}
-        onChange={onSpellsChange ?? ((ids) => handleMonsterProp("spells", ids))}
-      />
     </div>
   );
 }
@@ -282,29 +301,41 @@ function SpellMultiSelect({
   onChange: (ids: number[]) => void;
 }) {
   const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<number[]>(selectedIds);
   const allSpells: (Spell & { id: number })[] = Dao.getSpells();
 
   const filtered = query
     ? allSpells.filter(
         (s) =>
           s.name.toLowerCase().includes(query.toLowerCase()) &&
-          !selectedIds.includes(s.id)
+          !selected.includes(s.id)
       )
     : [];
+
+  const addSpell = (id: number) => {
+    const updated = [...selected, id];
+    setSelected(updated);
+    onChange(updated);
+    setQuery("");
+  };
+
+  const removeSpell = (id: number) => {
+    const updated = selected.filter((i) => i !== id);
+    setSelected(updated);
+    onChange(updated);
+  };
 
   return (
     <div className="spell-multiselect">
       <p className="stat-label">Spells</p>
-      {selectedIds.length > 0 && (
+      {selected.length > 0 && (
         <div className="spell-chips-edit">
-          {selectedIds.map((id) => {
+          {selected.map((id) => {
             const spell = allSpells.find((s) => s.id === id);
             return spell ? (
               <span key={id} className="spell-chip-edit">
                 {spell.name}
-                <button
-                  onClick={() => onChange(selectedIds.filter((i) => i !== id))}
-                >×</button>
+                <button onClick={() => removeSpell(id)}>×</button>
               </span>
             ) : null;
           })}
@@ -324,10 +355,7 @@ function SpellMultiSelect({
               <div
                 key={s.id}
                 className="spell-dropdown-item"
-                onMouseDown={() => {
-                  onChange([...selectedIds, s.id]);
-                  setQuery("");
-                }}
+                onMouseDown={() => addSpell(s.id)}
               >
                 {s.name}
                 <span className="spell-dropdown-level">Lv.{s.level}</span>
@@ -550,6 +578,12 @@ function Member(props: any) {
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
             onBlur={handleStats}
+            onSpellsChange={handleSpellsChange}
+          />
+          <MonsterPropsAction
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+            onBlur={handleStats}
           />
           <MonsterPropsOptional
             monsterProps={monsterProps}
@@ -622,6 +656,10 @@ function AddMember(props: any) {
 
   const handleMonsterProp = (key: keyof MonsterProperties, value: any) => {
     setMonsterProps((prev) => ({ ...prev, [key]: value }));
+  };
+
+    const handleSpellsChange = (ids: number[]) => {
+    setMonsterProps((prev) => ({ ...prev, spells: ids }));
   };
 
   const selectedClassName = "member";
@@ -754,6 +792,11 @@ function AddMember(props: any) {
       {addExpanded && (
         <div className="monster-properties">
           <MonsterPropsAlways
+            monsterProps={monsterProps}
+            handleMonsterProp={handleMonsterProp}
+            onSpellsChange={handleSpellsChange}
+          />
+          <MonsterPropsAction
             monsterProps={monsterProps}
             handleMonsterProp={handleMonsterProp}
           />
