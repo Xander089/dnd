@@ -394,37 +394,14 @@ function OtherStats(props: any) {
   const player: Player = props?.player;
   const mp = player?.monsterProperties;
 
-  const leftFields = [
-    { label: "AC", value: mp?.AC, type: "number" },
-    { label: "Challenge Rating", value: mp?.challenge_rating, type: "number" },
-    { label: "Prof. Bonus", value: mp?.proficiency_bonus, type: "number" },
-    { label: "EXP", value: mp?.exp, type: "number" },
-    { label: "Creature Type", value: mp?.type, type: "text" },
-    { label: "Alignment", value: mp?.alignment, type: "text" },
-    { label: "Saving Throws", value: mp?.savingThrows, type: "text" },
-  ].filter((f) => !!f.value);
-
-  const rightFields = [
-    { label: "Senses", value: mp?.senses },
-    { label: "Special Traits", value: mp?.traits },
-    { label: "Actions", value: mp?.actions },
-    { label: "Bonus Actions", value: mp?.bonus_actions },
-    { label: "Reactions", value: mp?.reactions },
-    { label: "Legendary Actions", value: mp?.legendary_actions },
-    { label: "Abilities", value: mp?.abilities },
-    { label: "Resistances", value: mp?.resistances },
-    { label: "Vulnerabilities", value: mp?.vulnerability },
-    { label: "Dmg. Immunities", value: mp?.damage_immunities },
-    { label: "Cond. Immunities", value: mp?.condition_immunities },
-  ].filter((f) => !!f.value) as { label: string; value: string }[];
-
-  const hasMonsterProps =
-    player?.type === "monster" &&
-    (leftFields.length > 0 || rightFields.length > 0);
-
   const selectedSpellIds: number[] = mp?.spells ?? [];
   const allSpells: (Spell & { id: number })[] = selectedSpellIds.length > 0 ? Dao.getSpells() : [];
   const selectedSpells = allSpells.filter((s) => selectedSpellIds.includes(s.id));
+
+  const hasTopRow = player?.type === "monster" && !!(mp?.AC || mp?.type || mp?.alignment || mp?.traits || selectedSpells.length > 0);
+  const hasMiddleRow = player?.type === "monster" && !!(mp?.actions || mp?.bonus_actions || mp?.legendary_actions);
+  const hasBottomRow = player?.type === "monster" && !!(mp?.challenge_rating || mp?.proficiency_bonus || mp?.exp || mp?.savingThrows || mp?.senses || mp?.abilities || mp?.reactions || mp?.resistances || mp?.vulnerability || mp?.damage_immunities || mp?.condition_immunities);
+  const hasMonsterProps = hasTopRow || hasMiddleRow || hasBottomRow;
 
   return isOpen ? (
     <div className={props?.customCLass}>
@@ -456,47 +433,147 @@ function OtherStats(props: any) {
       </div>
       {hasMonsterProps && (
         <div className="other-stats-monster-props">
-          {leftFields.length > 0 && (
-            <div className="other-stats-left">
-              {leftFields.map((f) => (
-                <div key={f.label} className="input-container">
-                  <p className="stat-label">{f.label}</p>
-                  <input type={f.type as "number" | "text"} value={f.value} readOnly />
+          {hasTopRow && (
+            <div className="other-stats-row">
+              {!!mp?.AC && (
+                <div className="input-container">
+                  <p className="stat-label">AC</p>
+                  <input type="number" value={mp.AC} readOnly />
                 </div>
-              ))}
+              )}
+              {!!mp?.type && (
+                <div className="input-container">
+                  <p className="stat-label">Creature Type</p>
+                  <input type="text" value={mp.type} readOnly />
+                </div>
+              )}
+              {!!mp?.alignment && (
+                <div className="input-container">
+                  <p className="stat-label">Alignment</p>
+                  <input type="text" value={mp.alignment} readOnly />
+                </div>
+              )}
+              {!!mp?.traits && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Special Traits</p>
+                  <textarea value={mp.traits} readOnly />
+                </div>
+              )}
+              {selectedSpells.length > 0 && (
+                <div className="other-stats-spells">
+                  <p className="stat-label">Spells</p>
+                  <div className="spell-chips-row">
+                    {selectedSpells.map((spell) => (
+                      <div key={spell.id} className="spell-chip-wrapper">
+                        <span className="spell-chip-label">{spell.name}</span>
+                        <div className="spell-tooltip">
+                          <p className="spell-tooltip-name">{spell.name}</p>
+                          <p><b>School:</b> {spell.school}</p>
+                          <p><b>Level:</b> {spell.level}</p>
+                          <p><b>Casting Time:</b> {spell.castingTime}{spell.castingTimeEnumValue ? ` ${spell.castingTimeEnumValue}` : ""}</p>
+                          <p><b>Range:</b> {spell.range}</p>
+                          <p><b>Duration:</b> {spell.duration}{spell.durationEnumValue ? ` ${spell.durationEnumValue}` : ""}</p>
+                          {spell.effect && <p><b>Effect:</b> {spell.effect}</p>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
-          {rightFields.length > 0 && (
-            <div className="other-stats-right">
-              {rightFields.map((f) => (
-                <div key={f.label} className="mp-textarea-container">
-                  <p className="stat-label">{f.label}</p>
-                  <textarea value={f.value} readOnly />
+          {hasMiddleRow && (
+            <div className="other-stats-row">
+              {!!mp?.actions && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Actions</p>
+                  <textarea value={mp.actions} readOnly />
                 </div>
-              ))}
+              )}
+              {!!mp?.bonus_actions && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Bonus Actions</p>
+                  <textarea value={mp.bonus_actions} readOnly />
+                </div>
+              )}
+              {!!mp?.legendary_actions && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Legendary Actions</p>
+                  <textarea value={mp.legendary_actions} readOnly />
+                </div>
+              )}
             </div>
           )}
-        </div>
-      )}
-      {selectedSpells.length > 0 && (
-        <div className="other-stats-spells">
-          <p className="stat-label">Spells</p>
-          <div className="spell-chips-row">
-            {selectedSpells.map((spell) => (
-              <div key={spell.id} className="spell-chip-wrapper">
-                <span className="spell-chip-label">{spell.name}</span>
-                <div className="spell-tooltip">
-                  <p className="spell-tooltip-name">{spell.name}</p>
-                  <p><b>School:</b> {spell.school}</p>
-                  <p><b>Level:</b> {spell.level}</p>
-                  <p><b>Casting Time:</b> {spell.castingTime}{spell.castingTimeEnumValue ? ` ${spell.castingTimeEnumValue}` : ""}</p>
-                  <p><b>Range:</b> {spell.range}</p>
-                  <p><b>Duration:</b> {spell.duration}{spell.durationEnumValue ? ` ${spell.durationEnumValue}` : ""}</p>
-                  {spell.effect && <p><b>Effect:</b> {spell.effect}</p>}
+          {hasBottomRow && (
+            <div className="other-stats-row">
+              {!!mp?.challenge_rating && (
+                <div className="input-container">
+                  <p className="stat-label">Challenge Rating</p>
+                  <input type="number" value={mp.challenge_rating} readOnly />
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
+              {!!mp?.proficiency_bonus && (
+                <div className="input-container">
+                  <p className="stat-label">Prof. Bonus</p>
+                  <input type="number" value={mp.proficiency_bonus} readOnly />
+                </div>
+              )}
+              {!!mp?.exp && (
+                <div className="input-container">
+                  <p className="stat-label">EXP</p>
+                  <input type="number" value={mp.exp} readOnly />
+                </div>
+              )}
+              {!!mp?.savingThrows && (
+                <div className="input-container">
+                  <p className="stat-label">Saving Throws</p>
+                  <input type="text" value={mp.savingThrows} readOnly />
+                </div>
+              )}
+              {!!mp?.senses && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Senses</p>
+                  <textarea value={mp.senses} readOnly />
+                </div>
+              )}
+              {!!mp?.abilities && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Abilities</p>
+                  <textarea value={mp.abilities} readOnly />
+                </div>
+              )}
+              {!!mp?.reactions && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Reactions</p>
+                  <textarea value={mp.reactions} readOnly />
+                </div>
+              )}
+              {!!mp?.resistances && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Resistances</p>
+                  <textarea value={mp.resistances} readOnly />
+                </div>
+              )}
+              {!!mp?.vulnerability && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Vulnerabilities</p>
+                  <textarea value={mp.vulnerability} readOnly />
+                </div>
+              )}
+              {!!mp?.damage_immunities && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Dmg. Immunities</p>
+                  <textarea value={mp.damage_immunities} readOnly />
+                </div>
+              )}
+              {!!mp?.condition_immunities && (
+                <div className="input-container-wide">
+                  <p className="stat-label">Cond. Immunities</p>
+                  <textarea value={mp.condition_immunities} readOnly />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

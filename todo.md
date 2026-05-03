@@ -1,2 +1,4 @@
-- Il roll generale non conta i modificatori ma solo il tiro di dado. Escludere da questo roll il party. Se valore di iniziativa è 0 allora usare il modificatore di Destrezza.
+- Il roll generale non conta i modificatori ma solo il tiro di dado. 
+- ! Escludere da questo roll il party. 
+- Se valore di iniziativa è 0 allora usare il modificatore di Destrezza.
 - nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
