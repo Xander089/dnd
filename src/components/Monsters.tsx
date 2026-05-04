@@ -7,6 +7,7 @@ import { MonsterProperties, Player, Spell } from "../types/GameTypes";
 import { Dao } from "../data/write";
 import MonsterHeader from "./MonsterHeader";
 import { ViewModel } from "../ViewModel";
+import { GetModifier } from "../MathLogic";
 
 type MonsterCategory = Partial<
   Omit<
@@ -479,7 +480,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Strength</p>
+          <p className="stat-label">Str {GetModifier(strength)}</p>
           <input
             type={"number"}
             value={strength}
@@ -488,7 +489,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Dexterity</p>
+          <p className="stat-label">Dex {GetModifier(dexterity)}</p>
           <input
             type={"number"}
             value={dexterity}
@@ -497,7 +498,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Constitution</p>
+          <p className="stat-label">Con {GetModifier(constitution)}</p>
           <input
             type={"number"}
             value={constitution}
@@ -506,7 +507,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Intelligence</p>
+          <p className="stat-label">Int {GetModifier(intelligence)}</p>
           <input
             type={"number"}
             value={intelligence}
@@ -515,7 +516,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Charisma</p>
+          <p className="stat-label">Cha {GetModifier(charisma)}</p>
           <input
             type={"number"}
             value={charisma}
@@ -524,7 +525,7 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Wisdom</p>
+          <p className="stat-label">Wis {GetModifier(wisdom)}</p>
           <input
             type={"number"}
             value={wisdom}
@@ -711,7 +712,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Strength</p>
+          <p className="stat-label">Str {GetModifier(category?.strength ?? 0)}</p>
           <input
             type={"number"}
             value={category?.strength}
@@ -721,7 +722,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Dexterity</p>
+          <p className="stat-label">Dex {GetModifier(category?.dexterity ?? 0)}</p>
           <input
             type={"number"}
             value={category?.dexterity}
@@ -731,7 +732,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Constitution</p>
+          <p className="stat-label">Con {GetModifier(category?.constitution ?? 0)}</p>
           <input
             type={"number"}
             value={category?.constitution}
@@ -741,7 +742,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Intelligence</p>
+          <p className="stat-label">Int {GetModifier(category?.intelligence ?? 0)}</p>
           <input
             type={"number"}
             value={category?.intelligence}
@@ -751,7 +752,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Charisma</p>
+          <p className="stat-label">Cha {GetModifier(category?.charisma ?? 0)}</p>
           <input
             type={"number"}
             value={category?.charisma}
@@ -761,7 +762,7 @@ function AddMember(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Wisdom</p>
+          <p className="stat-label">Wis {GetModifier(category?.wisdom ?? 0)}</p>
           <input
             type={"number"}
             value={category?.wisdom}

@@ -13,6 +13,7 @@ import Header from "./Header";
 import ModalGlobalEffect from "./dialogs/ModalGlobalEffect";
 import Hud from "./Hud";
 import ModalRemoveFromGame from "./dialogs/ModalRemoveFromGame";
+import { GetModifier } from "../MathLogic";
 
 function Table(props: any) {
   const [expand, setExpand] = useState(true); //collassa vista laterale
@@ -408,27 +409,27 @@ function OtherStats(props: any) {
     <div className={props?.customCLass}>
       <div className="other-stats">
         <div className="input-container" style={{ maxWidth: "10rem" }}>
-          <p className="stat-label">Strength</p>
+          <p className="stat-label">Str {GetModifier(player?.strength)}</p>
           <input type={"number"} value={player?.strength} readOnly></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Dexterity</p>
+          <p className="stat-label">Dex {GetModifier(player?.dexterity)}</p>
           <input type={"number"} value={player?.dexterity} readOnly></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Constitution</p>
+          <p className="stat-label">Con {GetModifier(player?.constitution)}</p>
           <input type={"number"} value={player?.constitution} readOnly></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Intelligence</p>
+          <p className="stat-label">Int {GetModifier(player?.intelligence)}</p>
           <input type={"number"} value={player?.intelligence} readOnly></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Charisma</p>
+          <p className="stat-label">Cha {GetModifier(player?.charisma)}</p>
           <input type={"number"} value={player?.charisma} readOnly></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Wisdom</p>
+          <p className="stat-label">Wis {GetModifier(player?.wisdom)}</p>
           <input type={"number"} value={player?.wisdom} readOnly></input>
         </div>
       </div>

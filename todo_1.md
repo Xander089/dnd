@@ -25,3 +25,7 @@
 - ! Contatore numeri degli status al passaggio del turno successivo. 
 - ! Con reset, azzerare non solo i turni ma anche gli status ecc. Deve ripartire da 0. Magari aggiungere l'opzione di rimozione dei mostri.
 - ! aggiustare posizione azioni, e tutte le altre proprietà di un monster
+- ! Il roll generale non conta i modificatori ma solo il tiro di dado. 
+- ! Escludere da questo roll il party. 
+- ! Se valore di iniziativa è 0 allora usare il modificatore di Destrezza.
+- ! nelle text box delle statistiche, mostrare in grigetto i modificatori (ste ti manda la foto)
