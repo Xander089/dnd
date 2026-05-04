@@ -18,7 +18,8 @@ export class Dao {
 
   static addMonstersToGame(categories: MonsterSelection[]) {
     categories
-      ?.filter((cat) => cat.isSelected && cat.quantity > 0)
+      // ?.filter((cat) => cat.isSelected && cat.quantity > 0)
+      ?.filter((cat) => cat.quantity > 0)
       ?.forEach((cat) => this.addMonsterToGame(cat));
   }
 

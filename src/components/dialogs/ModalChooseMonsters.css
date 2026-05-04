@@ -29,7 +29,7 @@
 .monster-category-row {
   width: 100%;
   display: grid;
-  grid-template-columns: 3.5rem 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   gap: 0.5rem;
   padding: 0.25rem 0;
@@ -86,7 +86,7 @@
   margin-top: 1rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 3.5rem 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 0.5rem;
   align-items: center;
   padding-bottom: 0.3rem;

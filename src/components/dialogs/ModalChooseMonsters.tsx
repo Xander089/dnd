@@ -50,9 +50,9 @@ function ChooseMonsters(props: any) {
         ></input>
       </div>
       <div className="choose-monsters-header">
-        <p>
+        {/* <p>
           <b>Select</b>
-        </p>
+        </p> */}
         <p>
           <b>Type</b>
         </p>
@@ -73,13 +73,13 @@ function ChooseMonsters(props: any) {
               key={"monster-category-row-" + it.category + "-" + it.id}
               className="monster-category-row"
             >
-              <input
+              {/* <input
                 className="select-monster-checkbox"
                 type={"checkbox"}
                 checked={it?.isSelected}
                 onKeyDown={(event: any) => handleKeyDown(event, it)}
                 onChange={() => props?.handleSelection(!it?.isSelected, it?.id)}
-              ></input>
+              ></input> */}
               <p>{it.category}</p>
               <input
                 type={"number"}
