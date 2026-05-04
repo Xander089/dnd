@@ -134,10 +134,23 @@ export class ViewModel {
   }
 
   static manualRoll(players: Player[]): Player[] {
-    players.forEach(
-      (p) =>
-        (p.initiative =
-          p.type === "monster" ? Math.ceil(Math.random() * 20) : p.initiative)
+    players.forEach((p : Player) =>
+        { 
+          //skippo i party member nel roll manuale chiamato dall'header  
+          if(p.type !== "monster") return;
+            
+            
+            const d20_Roll = Math.ceil(Math.random() * 20);
+            let initModifier : number = parseInt(p?.initModifier + "") ?? 0;
+            
+            // se modificatore è zero --> uso la destrezza come modifier
+            if(initModifier === 0){
+              let dexterity : number = parseInt(p?.initModifier + "") ?? 0;
+              initModifier = dexterity;
+            }
+
+            p.initiative = initModifier + d20_Roll;
+        }
     );
     return this.sortPlayers(players);
   }
