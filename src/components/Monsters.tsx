@@ -384,6 +384,7 @@ function Member(props: any) {
   const [monsterProps, setMonsterProps] = useState<Partial<MonsterProperties>>(
     player?.monsterProperties ?? {}
   );
+  const [initModifier, setInitModifier] = useState(player?.initModifier);
   const [deleteVisible, setDeleteVisible] = useState(false);
 
   const handleStats = () => {
@@ -405,6 +406,7 @@ function Member(props: any) {
       statuses: player?.statuses ?? [],
       sortIndex: player?.sortIndex,
       monsterProperties: monsterProps,
+      initModifier: player?.initModifier
     });
   };
 
@@ -433,6 +435,7 @@ function Member(props: any) {
       statuses: player?.statuses ?? [],
       sortIndex: player?.sortIndex,
       monsterProperties: updated,
+      initModifier: initModifier
     });
   };
 
@@ -467,11 +470,11 @@ function Member(props: any) {
           ></input>
         </div>
         <div className="input-container">
-          <p className="stat-label">Initiative</p>
+          <p className="stat-label">Init. Mod</p>
           <input
             type={"number"}
-            value={init}
-            onChange={(event: any) => setInit(event?.target.value)}
+            value={initModifier}
+            onChange={(event: any) => setInitModifier(event?.target.value)}
             onBlur={handleStats}
           ></input>
         </div>
@@ -628,7 +631,8 @@ function AddMember(props: any) {
       category?.currentHp === undefined ||
       category?.dexterity === undefined ||
       category?.hp === undefined ||
-      category?.initiative === undefined ||
+      // category?.initiative === undefined ||
+      category?.initModifier === undefined ||
       category?.intelligence === undefined ||
       category?.strength === undefined ||
       category?.wisdom === undefined;
@@ -644,7 +648,8 @@ function AddMember(props: any) {
       currentHp: property === "currentHp" ? value : category?.currentHp,
       dexterity: property === "dexterity" ? value : category?.dexterity,
       hp: property === "hp" ? value : category?.hp,
-      initiative: property === "initiative" ? value : category?.initiative,
+      // initiative: property === "initiative" ? value : category?.initiative,
+      initModifier: property === "initModifier" ? value : category?.initModifier,
       intelligence:
         property === "intelligence" ? value : category?.intelligence,
       strength: property === "strength" ? value : category?.strength,
@@ -699,9 +704,9 @@ function AddMember(props: any) {
           <p className="stat-label">Init. Mod</p>
           <input
             type={"number"}
-            value={category?.initiative}
+            value={category?.initModifier}
             onChange={(event: any) =>
-              handleCategory("initiative", event?.target.value)
+              handleCategory("initModifier", event?.target.value)
             }
           ></input>
         </div>

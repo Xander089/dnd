@@ -29,13 +29,23 @@ export class Dao {
     const count = this.getPlayingCategoryCount(category);
     let i = 0;
     while (i < category.quantity) {
+
+      const initModifier : number = parseInt(selectedCategory?.initModifier + "") ?? 0;
+
+      let manualRoll : number = parseInt(category?.manualRoll + "") ?? 0;
+      if(manualRoll === 0){
+        const d20_Roll : number = Math.ceil(Math.random() * 20);
+        manualRoll = d20_Roll;
+      }
+      /** iniziativa = manualRoll + modifier */
+      const initiative : number = manualRoll + initModifier;
       const stamp: Omit<Player, "id"> = {
         name: selectedCategory.category + (i + 1 + count),
         category: selectedCategory.category,
         type: "monster",
         hp: selectedCategory.hp,
         currentHp: selectedCategory.currentHp,
-        initiative: parseInt(selectedCategory.initiative + "") + (parseInt(category.manualRoll + "") > 0 ? parseInt(category.manualRoll + "") : Math.ceil(Math.random() * 20)),
+        initiative: initiative,
         strength: selectedCategory.strength,
         dexterity: selectedCategory.dexterity,
         constitution: selectedCategory.constitution,
@@ -45,6 +55,7 @@ export class Dao {
         isPlaying: true,
         statuses: [],
         monsterProperties: selectedCategory.monsterProperties,
+        initModifier: selectedCategory.initModifier
       };
       this.addPlayer(stamp);
       i += 1;
@@ -80,6 +91,7 @@ export class Dao {
         charisma: player?.charisma,
         isPlaying: false,
         statuses: player?.statuses ?? [],
+        initModifier: player?.initModifier
       };
       this.writePlayer(newPlayer);
     }

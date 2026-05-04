@@ -147,6 +147,7 @@ function App() {
       type: playerToChange?.type,
       wisdom: playerToChange?.wisdom,
       monsterProperties: playerToChange?.monsterProperties,
+      initModifier: playerToChange?.initModifier
     };
 
     setPlayers(

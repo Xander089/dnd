@@ -21,6 +21,7 @@ export type Player = {
   statuses: PlayerStatus[];
   sortIndex?: number;
   monsterProperties?: Partial<MonsterProperties>;
+  initModifier: number;
 };
 
 // export type Monster = Omit<Player, "sortIndex">;

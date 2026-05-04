@@ -357,6 +357,7 @@ function AddMember(props: any) {
       isPlaying: property === "isPlaying" ? value : player?.isPlaying,
       name: property === "name" ? value : player?.name,
       statuses: player?.statuses ?? [],
+      initModifier: 0
     };
     setPlayer(playerToUpdate);
   };

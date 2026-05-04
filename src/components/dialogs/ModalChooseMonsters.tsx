@@ -65,10 +65,10 @@ function ChooseMonsters(props: any) {
       </div>
       <div className="monster-category-list">
         {monstersCategories
-          ?.filter((m) =>
+          ?.filter((m : MonsterSelection) =>
             m.category.toLowerCase().includes(searched.toLowerCase())
           )
-          ?.map((it) => (
+          ?.map((it : MonsterSelection) => (
             <div
               key={"monster-category-row-" + it.category + "-" + it.id}
               className="monster-category-row"

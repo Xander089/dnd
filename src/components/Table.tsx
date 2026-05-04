@@ -111,6 +111,7 @@ function Member(props: any) {
       charisma: player?.charisma,
       isPlaying: player?.isPlaying,
       statuses: player?.statuses ?? [],
+      initModifier: player?.initModifier,
       sortIndex: player?.sortIndex,
     };
   }
