@@ -41,6 +41,17 @@ function App() {
       setHistory(History.getAll());
     }
   }, []);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "e") {
+        e.preventDefault();
+        document.body.classList.toggle("textarea-expanded");
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
   const [monstersCategories, setMonstersCategories] = useState(
     ViewModel.sort(ViewModel.getCategories())
   );
