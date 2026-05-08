@@ -180,7 +180,7 @@ function Member(props: any) {
 
   const selectedClassName = !props?.isSelected ? "" : " memberSelected";
   const colorClassName =
-    player?.type === "monster" ? " monster-bg" : " player-bg";
+    player?.type === "monster" ? " monster-bg" : (props?.isSelected ? "" : " player-bg");
 
   return (
     <div className={"member-border" + selectedClassName + colorClassName}>

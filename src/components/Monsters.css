@@ -132,11 +132,10 @@
 }
 
 .memberSelected {
-  border-color: var(--gold) !important;
+  border-color: var(--wine) !important;
   box-shadow:
-    0 0 0 2px var(--gold),
-    0 0 18px rgba(212, 176, 86, 0.5),
-    inset 0 0 0 1px rgba(125,30,30,0.20),
+    0 0 0 2px var(--wine),
+    0 0 18px rgba(125, 30, 30, 0.5),
     0 4px 8px rgba(60,40,15,0.20) !important;
   animation: selected-pulse 2.6s ease-in-out infinite;
 }
