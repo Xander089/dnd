@@ -114,6 +114,7 @@ function Member(props: any) {
       statuses: player?.statuses ?? [],
       initModifier: player?.initModifier,
       sortIndex: player?.sortIndex,
+      monsterProperties: player?.monsterProperties,
     };
   }
   const handleStats = (updatedHp: number | undefined = undefined) => {
