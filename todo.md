@@ -1,0 +1,11 @@
+- iniziativa scattera: usare dexterity come secondo sort param *
+- textarea componenti incantesimi. FX spostarla in basso
+- side in certi casi si sovrappone al resto
+- doppia apertura: le textarea sono strette
+- filtro spell: school, name, level
+- scompaiono dati di dettaglio quando monster takes damage/cure
+- fix colore selected in game
+- fix punti exp
+- fix color when hp < 10%
+- password
+- inserire logo quando ce l'hai

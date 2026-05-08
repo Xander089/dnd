@@ -13,10 +13,17 @@ export class ViewModel {
 
   static sortPlayers(players: Player[]): Player[] {
     const result = players.sort((a, b) => {
-      const aIndex = a?.initiative ?? 0;
-      const bIndex = b?.initiative ?? 0;
-      if (aIndex * 1 > bIndex * 1) return -1;
-      if (aIndex * 1 < bIndex * 1) return 1;
+      let aIndex = (a?.initiative ?? 0) * 1;
+      let bIndex = (b?.initiative ?? 0) * 1;
+
+      //stessa iniziativa? --> uso la dexterity per sortare
+      if(aIndex === bIndex){
+        aIndex = (a?.dexterity ?? 0) * 1;
+        bIndex = (b?.dexterity ?? 0) * 1;
+      }
+
+      if (aIndex > bIndex ) return -1;
+      if (aIndex  < bIndex ) return 1;
       return 0;
     });
     return [...result];

@@ -1,3 +1,4 @@
+import { GetInitiative } from "../MathLogic";
 import { Game } from "../types/Game";
 import { MonsterSelection, Player, Spell } from "../types/GameTypes";
 
@@ -31,15 +32,8 @@ export class Dao {
     let i = 0;
     while (i < category.quantity) {
 
-      const initModifier : number = parseInt(selectedCategory?.initModifier + "") ?? 0;
-
-      let manualRoll : number = parseInt(category?.manualRoll + "") ?? 0;
-      if(manualRoll === 0){
-        const d20_Roll : number = Math.ceil(Math.random() * 20);
-        manualRoll = d20_Roll;
-      }
-      /** iniziativa = manualRoll + modifier */
-      const initiative : number = manualRoll + initModifier;
+      const initiative = GetInitiative(selectedCategory, category);
+      
       const stamp: Omit<Player, "id"> = {
         name: selectedCategory.category + (i + 1 + count),
         category: selectedCategory.category,
