@@ -45,6 +45,7 @@ export type Spell = {
   range: string,
   duration: string,
   durationEnumValue?: string,
+  components: string,
   effect: string
 }
 

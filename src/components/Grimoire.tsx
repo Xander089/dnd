@@ -31,11 +31,14 @@ export default function Grimoire() {
 
   const filterSpells = (searched: string) => {
     const all = Dao.getSpells();
+    const q = searched.toLowerCase();
     setSpells(
       searched === ""
         ? all
         : all.filter((s) =>
-            s.name.toLowerCase().includes(searched.toLowerCase())
+            s.name.toLowerCase().includes(q) ||
+            s.school.toLowerCase().includes(q) ||
+            s.level.toString().includes(q)
           )
     );
   };
@@ -92,11 +95,12 @@ function SpellRow({
   const [range, setRange] = useState(spell.range);
   const [duration, setDuration] = useState(spell.duration);
   const [durationEnumValue, setDurationEnumValue] = useState(spell.durationEnumValue ?? "");
+  const [components, setComponents] = useState(spell.components ?? "");
   const [effect, setEffect] = useState(spell.effect);
   const [deleteVisible, setDeleteVisible] = useState(false);
 
   const save = () => {
-    onUpdate(spell.id, { name, school, level, castingTime, castingTimeEnumValue, range, duration, durationEnumValue, effect });
+    onUpdate(spell.id, { name, school, level, castingTime, castingTimeEnumValue, range, duration, durationEnumValue, components, effect });
   };
 
   return (
@@ -139,14 +143,13 @@ function SpellRow({
           </select>
         </div>
         <div className="grimoire-container input-container spell-effect-container">
-          <p className="stat-label">Effect</p>
+          <p className="stat-label">Components</p>
           <textarea
-          style={{minWidth: "9rem"}}
-          value={effect}
-          onChange={(e) =>setEffect(e.target.value)}
-          onBlur={save}
-        />
-
+            style={{minWidth: "9rem"}}
+            value={components}
+            onChange={(e) => setComponents(e.target.value)}
+            onBlur={save}
+          />
         </div>
         <div className="button-trash-container">
           <button
@@ -164,6 +167,16 @@ function SpellRow({
               type="Spell"
             />
           )}
+        </div>
+      </div>
+      <div className="spell-effect-row">
+        <div className="input-container spell-effect-container">
+          <p className="stat-label">Effect</p>
+          <textarea
+            value={effect}
+            onChange={(e) => setEffect(e.target.value)}
+            onBlur={save}
+          />
         </div>
       </div>
     </div>
@@ -186,6 +199,7 @@ function AddSpell({
     range: "",
     duration: "",
     durationEnumValue: "",
+    components: "",
     effect: "",
   });
 
@@ -241,13 +255,19 @@ function AddSpell({
           </select>
         </div>
         <div className="input-container spell-effect-container">
-          <p className="stat-label">Effect</p>
-          <input type="text" value={spell.effect} onChange={(e) => set("effect", e.target.value)} />
+          <p className="stat-label">Components</p>
+          <textarea value={spell.components} onChange={(e) => set("components", e.target.value)} />
         </div>
         <div className="button-trash-container">
           <button className="add-button add-button-monsters" disabled={isDisabled} onClick={handleAdd}>
             Save
           </button>
+        </div>
+      </div>
+      <div className="spell-effect-row">
+        <div className="input-container spell-effect-container">
+          <p className="stat-label">Effect</p>
+          <textarea value={spell.effect} onChange={(e) => set("effect", e.target.value)} />
         </div>
       </div>
     </div>
