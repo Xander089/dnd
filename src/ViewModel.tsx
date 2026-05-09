@@ -22,6 +22,18 @@ export class ViewModel {
         bIndex = (b?.dexterity ?? 0) * 1;
       }
 
+      //stessa dex? --> uso int
+      if(aIndex === bIndex){
+        aIndex = (a?.intelligence ?? 0) * 1;
+        bIndex = (b?.intelligence ?? 0) * 1;
+      }
+
+      //stessa int? --> vince il player
+      if(aIndex === bIndex){
+        aIndex = a?.type === "player" ? 1 : 0;
+        bIndex = b?.type === "player" ? 1 : 0;
+      }
+
       if (aIndex > bIndex ) return -1;
       if (aIndex  < bIndex ) return 1;
       return 0;
